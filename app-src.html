@@ -1,0 +1,1550 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>NeuroAssess</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<style>
+  :root {
+    color-scheme: light;
+    --page-bg: #f9f9f7;
+    --surface: #fcfcfb;
+    --surface-2: #f2f1ed;
+    --text-primary: #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted: #898781;
+    --border: rgba(11,11,11,0.10);
+    --border-strong: rgba(11,11,11,0.16);
+    --grid: #e1e0d9;
+    --axis: #c3c2b7;
+    --accent: #2a78d6;
+    --accent-strong: #1c5cab;
+    --accent-wash: rgba(42,120,214,0.10);
+    --accent-ink: #ffffff;
+    --series-dom: #2a78d6;
+    --series-ndom: #eb6834;
+    --series-ndom-wash: rgba(235,104,52,0.12);
+    --success: #0ca30c;
+    --success-ink: #006300;
+    --critical: #d03b3b;
+    --critical-wash: rgba(208,59,59,0.10);
+    --shadow: 0 1px 2px rgba(11,11,11,0.06), 0 8px 24px -12px rgba(11,11,11,0.18);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --page-bg: #0d0d0d;
+      --surface: #1a1a19;
+      --surface-2: #212120;
+      --text-primary: #ffffff;
+      --text-secondary: #c3c2b7;
+      --text-muted: #898781;
+      --border: rgba(255,255,255,0.10);
+      --border-strong: rgba(255,255,255,0.18);
+      --grid: #2c2c2a;
+      --axis: #383835;
+      --accent: #3987e5;
+      --accent-strong: #6ba6ee;
+      --accent-wash: rgba(57,135,229,0.16);
+      --accent-ink: #ffffff;
+      --series-dom: #3987e5;
+      --series-ndom: #d95926;
+      --series-ndom-wash: rgba(217,89,38,0.18);
+      --success: #17c217;
+      --success-ink: #4fe34f;
+      --critical: #e66767;
+      --critical-wash: rgba(230,103,103,0.14);
+      --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px -12px rgba(0,0,0,0.6);
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --page-bg: #0d0d0d;
+    --surface: #1a1a19;
+    --surface-2: #212120;
+    --text-primary: #ffffff;
+    --text-secondary: #c3c2b7;
+    --text-muted: #898781;
+    --border: rgba(255,255,255,0.10);
+    --border-strong: rgba(255,255,255,0.18);
+    --grid: #2c2c2a;
+    --axis: #383835;
+    --accent: #3987e5;
+    --accent-strong: #6ba6ee;
+    --accent-wash: rgba(57,135,229,0.16);
+    --accent-ink: #ffffff;
+    --series-dom: #3987e5;
+    --series-ndom: #d95926;
+    --series-ndom-wash: rgba(217,89,38,0.18);
+    --success: #17c217;
+    --success-ink: #4fe34f;
+    --critical: #e66767;
+    --critical-wash: rgba(230,103,103,0.14);
+    --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px -12px rgba(0,0,0,0.6);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+  }
+  #app {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: max(20px, env(safe-area-inset-top)) max(18px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) max(18px, env(safe-area-inset-left));
+  }
+  .wrap { width: 100%; max-width: 460px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; flex: 1; }
+  .wrap-wide { max-width: 720px; }
+
+  h1, h2, h3 { text-wrap: balance; margin: 0; }
+  h1 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.01em; }
+  h2 { font-size: 1.15rem; font-weight: 700; }
+  p { margin: 0; line-height: 1.5; }
+  .muted { color: var(--text-secondary); }
+  .tiny { font-size: 0.8rem; color: var(--text-muted); }
+  .tabular { font-variant-numeric: tabular-nums; }
+
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+  }
+
+  .row { display: flex; align-items: center; gap: 10px; }
+  .col { display: flex; flex-direction: column; gap: 6px; }
+  .between { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .grow { flex: 1; }
+
+  label.field-label { font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); }
+  input[type="text"] {
+    width: 100%;
+    font-size: 1rem;
+    padding: 13px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--border-strong);
+    background: var(--surface-2);
+    color: var(--text-primary);
+    font-family: inherit;
+  }
+  input[type="text"]:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+  .hand-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .hand-opt {
+    padding: 13px 10px;
+    text-align: center;
+    border-radius: 12px;
+    border: 1.5px solid var(--border-strong);
+    background: var(--surface-2);
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    user-select: none;
+  }
+  .hand-opt[aria-pressed="true"] {
+    border-color: var(--accent);
+    background: var(--accent-wash);
+    color: var(--accent-strong);
+  }
+
+  button { font-family: inherit; }
+  .btn {
+    appearance: none;
+    border: none;
+    border-radius: 14px;
+    padding: 15px 20px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: transform 0.05s ease, opacity 0.15s ease;
+  }
+  .btn:active { transform: scale(0.98); }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .btn-primary { background: var(--accent); color: var(--accent-ink); }
+  .btn-ghost { background: var(--surface-2); color: var(--text-primary); border: 1px solid var(--border-strong); }
+  .btn-critical { background: transparent; color: var(--critical); border: 1px solid var(--critical); }
+  .btn-link { background: transparent; color: var(--accent-strong); padding: 8px 4px; font-weight: 600; width: auto; }
+
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.02em;
+    padding: 5px 10px; border-radius: 999px;
+    background: var(--surface-2); color: var(--text-secondary);
+    border: 1px solid var(--border);
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+
+  .progress-track { height: 6px; border-radius: 999px; background: var(--surface-2); overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--accent); border-radius: 999px; transition: width 0.3s ease; }
+
+  .tap-zone {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    max-height: 46dvh;
+    border-radius: 32px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+  }
+  .tap-zone:active { filter: brightness(0.92); }
+  .tap-zone .tap-count { font-size: 4rem; font-weight: 800; line-height: 1; }
+  .tap-zone .tap-hint { font-size: 0.9rem; font-weight: 600; opacity: 0.85; }
+
+  .timer-big { font-size: 3rem; font-weight: 800; text-align: center; }
+  .center-col { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; }
+
+  .qr-wrap {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+  }
+  .qr-wrap svg { width: 100%; height: auto; display: block; max-width: 220px; }
+
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 7px; font-size: 0.82rem; color: var(--text-secondary); font-weight: 600; }
+  .legend-swatch { width: 11px; height: 11px; border-radius: 3px; flex: none; }
+
+  select {
+    font-family: inherit;
+    font-size: 0.92rem;
+    font-weight: 600;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border-strong);
+    background: var(--surface-2);
+    color: var(--text-primary);
+  }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  th, td { text-align: left; padding: 9px 8px; border-bottom: 1px solid var(--border); }
+  th { color: var(--text-muted); font-weight: 600; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .table-scroll { overflow-x: auto; }
+
+  a.plain { color: var(--accent-strong); text-decoration: none; font-weight: 600; }
+  a.plain:hover { text-decoration: underline; }
+
+  .top-nav { display: flex; justify-content: space-between; align-items: center; }
+  .brand { display: flex; align-items: center; gap: 8px; font-weight: 700; }
+  .brand .mark { width: 22px; height: 22px; border-radius: 7px; background: var(--accent); flex: none; }
+
+  .empty-state { text-align: center; padding: 30px 10px; color: var(--text-secondary); }
+
+  .toast {
+    position: fixed; left: 50%; bottom: max(20px, env(safe-area-inset-bottom));
+    transform: translateX(-50%);
+    background: var(--text-primary); color: var(--page-bg);
+    padding: 11px 18px; border-radius: 999px; font-size: 0.85rem; font-weight: 600;
+    box-shadow: var(--shadow); z-index: 50; max-width: 90vw; text-align: center;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+
+  .bar-chart-svg text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; }
+
+  .menu-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px;
+    border-radius: 18px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+  }
+  .menu-card:active { transform: scale(0.99); }
+  .menu-card .menu-icon {
+    width: 46px; height: 46px; border-radius: 13px; flex: none;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+  }
+  .menu-card .menu-body { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+  .menu-card .menu-arrow { color: var(--text-muted); font-size: 1.1rem; }
+
+  .study-pulse {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: var(--accent-wash);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .study-pulse::before {
+    content: ""; position: absolute; inset: 0; border-radius: 50%;
+    background: var(--accent-wash); animation: study-pulse-ring 1.6s ease-out infinite;
+  }
+  .study-pulse .study-pulse-dot { width: 20px; height: 20px; border-radius: 50%; background: var(--accent); z-index: 1; }
+  @keyframes study-pulse-ring {
+    0% { transform: scale(0.8); opacity: 0.7; }
+    100% { transform: scale(2.2); opacity: 0; }
+  }
+
+  .word-display {
+    font-size: 2.4rem;
+    font-weight: 800;
+    text-align: center;
+    letter-spacing: -0.01em;
+    word-break: break-word;
+  }
+  .choice-row { display: flex; gap: 10px; }
+  .choice-row .btn { flex: 1; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="toast-host"></div>
+
+<script>__QRCODE_LIB__</script>
+
+<script>
+// Reference word pool for the Verbal Recall Assessment (baked in once at
+// build time, from Brysbaert et al. concreteness norms — Conc.M >= 4.5,
+// three semantic categories, 144 words each).
+var WORDLIST = __WORDLIST_JSON__;
+</script>
+
+<script>
+// -----------------------------------------------------------------------
+// DEPLOYMENT CONFIG — fill this in after you deploy the Google Apps Script
+// backend (see README.md). Everything else in this file can be left alone.
+// -----------------------------------------------------------------------
+var CONFIG = {
+  // Paste the Web App URL you get from Apps Script's "Deploy" dialog here,
+  // e.g. "https://script.google.com/macros/s/AKfycb.../exec"
+  APPS_SCRIPT_URL: "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE"
+};
+</script>
+
+<script>
+/* -------------------------------------------------------------------------
+   Neurocognitive Assessments — self-contained mobile app + dashboard
+   Self-hosted edition: results are stored in a Google Sheet via a small
+   Apps Script backend (see apps-script/Code.gs and README.md), instead of
+   Claude's artifact-publish mechanism. Any static host (GitHub Pages,
+   Netlify, etc.) can serve this file as-is.
+   ------------------------------------------------------------------------- */
+(function () {
+  "use strict";
+
+  var SESSIONS = [];
+  var configured = CONFIG.APPS_SCRIPT_URL && CONFIG.APPS_SCRIPT_URL.indexOf("PASTE_YOUR") !== 0;
+
+  var TRIALS_PER_HAND = 2;
+  var TOTAL_TRIALS = TRIALS_PER_HAND * 2;
+  var TRIAL_MS = 10000;
+  var REST_MS = 10000;
+  var STUDY_GAP_MS = 1000;
+  var RECOGNITION_COUNT = 24;
+
+  function uid() {
+    return "s_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2, 9);
+  }
+
+  function fmtDateTime(iso) {
+    try {
+      var d = new Date(iso);
+      return d.toLocaleDateString(undefined, { month: "short", day: "numeric" }) +
+        ", " + d.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" });
+    } catch (e) { return iso; }
+  }
+  function fmtTimeShort(iso) {
+    try {
+      var d = new Date(iso);
+      return d.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" });
+    } catch (e) { return iso; }
+  }
+  function mean(arr) {
+    if (!arr.length) return 0;
+    var s = 0;
+    for (var i = 0; i < arr.length; i++) s += arr[i];
+    return s / arr.length;
+  }
+  function round1(n) { return Math.round(n * 10) / 10; }
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function niceMax(v) {
+    if (v <= 0) return 10;
+    var mag = Math.pow(10, Math.floor(Math.log10(v)));
+    var norm = v / mag;
+    var step = norm <= 1 ? 1 : norm <= 2 ? 2 : norm <= 5 ? 5 : 10;
+    return step * mag;
+  }
+  function shuffle(arr) {
+    for (var i = arr.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+    }
+    return arr;
+  }
+  function sessionType(s) { return s.type || "motor"; }
+
+  /* ------------------------------ participant ------------------------------ */
+
+  var PARTICIPANT_KEY = "assess_participant_v1";
+  function getParticipantName() {
+    try { return sessionStorage.getItem(PARTICIPANT_KEY) || ""; } catch (e) { return ""; }
+  }
+  function setParticipantName(name) {
+    try { sessionStorage.setItem(PARTICIPANT_KEY, name); } catch (e) {}
+  }
+
+  /* ---------------------------- motor state ---------------------------- */
+
+  var MOTOR_KEY = "ftt_inprogress_v1";
+  var motorTest = null; // in-progress test object, persisted to sessionStorage
+
+  function loadMotorTest() {
+    try {
+      var raw = sessionStorage.getItem(MOTOR_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) { return null; }
+  }
+  function saveMotorTest() {
+    try { sessionStorage.setItem(MOTOR_KEY, JSON.stringify(motorTest)); } catch (e) {}
+  }
+  function clearMotorTest() {
+    motorTest = null;
+    try { sessionStorage.removeItem(MOTOR_KEY); } catch (e) {}
+  }
+
+  function newMotorTest(name, dominant) {
+    motorTest = {
+      name: name,
+      dominant: dominant, // "left" | "right"
+      step: "ready",      // ready | tapping | rest | done
+      trialIndex: 0,       // 0-based, 0..9
+      trials: [],          // {hand:'dominant'|'nondominant', taps}
+      taps: 0,
+      phaseEndsAt: null
+    };
+    saveMotorTest();
+  }
+
+  function handForTrial(idx) {
+    // idx 0-based: even => dominant, odd => non-dominant (alternating, dominant first)
+    return idx % 2 === 0 ? "dominant" : "nondominant";
+  }
+  function handLabel(which) {
+    if (!motorTest) return "";
+    var concrete = which === "dominant" ? motorTest.dominant : (motorTest.dominant === "left" ? "right" : "left");
+    var side = concrete.charAt(0).toUpperCase() + concrete.slice(1);
+    var role = which === "dominant" ? "dominant" : "non-dominant";
+    return side + " hand (" + role + ")";
+  }
+
+  /* ---------------------------- verbal state ---------------------------- */
+
+  var VERBAL_KEY = "verbal_inprogress_v1";
+  var verbalTest = null;
+
+  function loadVerbalTest() {
+    try {
+      var raw = sessionStorage.getItem(VERBAL_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) { return null; }
+  }
+  function saveVerbalTest() {
+    try { sessionStorage.setItem(VERBAL_KEY, JSON.stringify(verbalTest)); } catch (e) {}
+  }
+  function clearVerbalTest() {
+    verbalTest = null;
+    try { sessionStorage.removeItem(VERBAL_KEY); } catch (e) {}
+  }
+
+  function pickCategoryForName(name) {
+    var cats = Object.keys(WORDLIST.categories);
+    var priorVerbal = SESSIONS.filter(function (s) { return sessionType(s) === "verbal" && s.name === name; });
+    return cats[priorVerbal.length % cats.length];
+  }
+
+  function pickWordsForSession(name, category) {
+    var pool = WORDLIST.categories[category].map(function (w) { return w.word; });
+    var priorSameCategory = SESSIONS.filter(function (s) {
+      return sessionType(s) === "verbal" && s.name === name && s.category === category;
+    });
+    var usedWords = {};
+    priorSameCategory.forEach(function (s) {
+      (s.targets || []).forEach(function (w) { usedWords[w] = true; });
+    });
+    var unused = pool.filter(function (w) { return !usedWords[w]; });
+    // Reset the rotation once the category's pool is exhausted, so there is
+    // always enough headroom to draw a fresh 24-word set.
+    var available = unused.length >= RECOGNITION_COUNT ? unused : pool.slice();
+    var targets = shuffle(available.slice()).slice(0, 12);
+    var remainingPool = pool.filter(function (w) { return targets.indexOf(w) === -1; });
+    var foils = shuffle(remainingPool).slice(0, 12);
+    return { targets: targets, foils: foils };
+  }
+
+  function newVerbalTest(name) {
+    var category = pickCategoryForName(name);
+    var picked = pickWordsForSession(name, category);
+    verbalTest = {
+      name: name,
+      category: category,
+      step: "intro", // intro | study | recognition | summary
+      targets: picked.targets,
+      foils: picked.foils,
+      studyIndex: 0,
+      items: null,
+      itemIndex: 0
+    };
+    saveVerbalTest();
+  }
+
+  function categoryLabel(cat) {
+    if (cat === "body_part") return "body parts";
+    if (cat === "animal") return "animals";
+    if (cat === "food") return "food";
+    return cat;
+  }
+
+  function speakStudyWord(idx) {
+    var word = verbalTest.targets[idx];
+    try {
+      if (window.speechSynthesis && window.SpeechSynthesisUtterance) {
+        window.speechSynthesis.cancel();
+        var utter = new SpeechSynthesisUtterance(word);
+        utter.rate = 0.92;
+        window.speechSynthesis.speak(utter);
+        return true;
+      }
+    } catch (e) {}
+    return false;
+  }
+
+  function buildRecognitionItems() {
+    var items = verbalTest.targets.map(function (w) { return { word: w, isTarget: true, response: null }; })
+      .concat(verbalTest.foils.map(function (w) { return { word: w, isTarget: false, response: null }; }));
+    verbalTest.items = shuffle(items);
+    verbalTest.itemIndex = 0;
+  }
+
+  /* -------------------------------- router -------------------------------- */
+
+  function route() {
+    var h = location.hash.replace(/^#\/?/, "").split("?")[0];
+    if (h === "dashboard") return "dashboard";
+    if (h === "motor") return "motor";
+    if (h === "verbal") return "verbal";
+    return "menu";
+  }
+
+  window.addEventListener("hashchange", render);
+
+  /* -------------------------------- toast -------------------------------- */
+
+  var toastTimer = null;
+  function toast(msg) {
+    var host = document.getElementById("toast-host");
+    host.innerHTML = '<div class="toast">' + escapeHtml(msg) + "</div>";
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { host.innerHTML = ""; }, 3200);
+  }
+
+  /* ------------------------------ QR code ------------------------------ */
+
+  function qrSvg(text, opts) {
+    opts = opts || {};
+    var qr = qrcode(0, "M");
+    qr.addData(text);
+    qr.make();
+    return qr.createSvgTag({ cellSize: opts.cellSize || 6, margin: opts.margin != null ? opts.margin : 8 });
+  }
+
+  function testUrl() {
+    // Once this page is actually hosted (GitHub Pages, Netlify, etc.),
+    // window.location IS the real public URL — no baked-in constant needed,
+    // unlike the Claude-artifact edition this was adapted from.
+    return location.origin + location.pathname + location.search;
+  }
+
+  /* ------------------------------ persistence ------------------------------ */
+  // Results are stored in a Google Sheet via a tiny Apps Script web app
+  // (see apps-script/Code.gs + README.md). Two calls only:
+  //   GET  CONFIG.APPS_SCRIPT_URL           -> { sessions: [...] }
+  //   POST CONFIG.APPS_SCRIPT_URL  (1 row)  -> appends that session
+  //
+  // Apps Script's CORS handling for POST is notoriously picky about
+  // preflight requests, so the POST is sent as text/plain (a "simple
+  // request" that skips preflight) with mode:"no-cors" — that makes the
+  // response opaque (we can't read success/failure from it directly), so
+  // submitSession() re-fetches the sheet afterward and checks the new
+  // session's id actually landed, which is a reliable way to confirm the
+  // write worked without depending on a readable POST response.
+
+  function fetchSessions() {
+    if (!configured) return Promise.reject({ code: "not_configured" });
+    return fetch(CONFIG.APPS_SCRIPT_URL, { method: "GET", cache: "no-store" })
+      .then(function (res) {
+        if (!res.ok) throw { code: "upstream_error" };
+        return res.json();
+      })
+      .then(function (data) {
+        SESSIONS = (data && data.sessions) || [];
+        return SESSIONS;
+      })
+      .catch(function (err) {
+        throw (err && err.code) ? err : { code: "network_error" };
+      });
+  }
+
+  function submitSession(session) {
+    if (!configured) return Promise.reject({ code: "not_configured" });
+    return fetch(CONFIG.APPS_SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(session)
+    }).then(function () {
+      // no-cors responses are opaque — confirm the write actually landed
+      // by re-fetching and checking for this session's id, with a couple
+      // of retries in case the sheet append is still propagating.
+      function verify(attemptsLeft) {
+        return fetchSessions().then(function (sessions) {
+          var found = sessions.some(function (s) { return s.id === session.id; });
+          if (found) return true;
+          if (attemptsLeft <= 0) throw { code: "unverified" };
+          return new Promise(function (r) { setTimeout(r, 700); }).then(function () {
+            return verify(attemptsLeft - 1);
+          });
+        });
+      }
+      return verify(3);
+    }).catch(function (err) {
+      throw (err && err.code) ? err : { code: "network_error" };
+    });
+  }
+
+  function submitErrorMessage(err) {
+    var code = err && err.code;
+    if (code === "not_configured") {
+      return "This app isn't connected to a results sheet yet — set CONFIG.APPS_SCRIPT_URL in the page (see README.md), then try again.";
+    }
+    if (code === "unverified") {
+      return "Sent, but couldn't confirm it was saved — check the dashboard, and re-submit if it's missing.";
+    }
+    if (code === "network_error") {
+      return "Couldn't reach the results sheet. Check your internet connection and try again.";
+    }
+    return "Couldn't save just now — try again.";
+  }
+
+  /* -------------------------------- render -------------------------------- */
+
+  var dashboardPollHandle = null;
+  function clearDashboardPoll() { if (dashboardPollHandle) { clearInterval(dashboardPollHandle); dashboardPollHandle = null; } }
+
+  // Re-renders the dashboard DOM from whatever SESSIONS currently holds,
+  // without triggering a fetch — used by the fetch/poll callbacks below so
+  // a completed request never re-triggers itself into a fetch loop.
+  function refreshDashboardView() {
+    if (route() !== "dashboard") return;
+    document.getElementById("app").innerHTML = renderDashboard();
+    bindDashboard();
+  }
+
+  function render() {
+    var r = route();
+    var app = document.getElementById("app");
+    if (r !== "dashboard") clearDashboardPoll();
+    if (r === "dashboard") {
+      app.innerHTML = renderDashboard();
+      bindDashboard();
+      clearDashboardPoll();
+      if (configured) {
+        fetchSessions().then(refreshDashboardView).catch(function () {
+          var line = document.getElementById("dash-status-line");
+          if (line) line.textContent = "Couldn't reach the results sheet — check your connection.";
+        });
+        dashboardPollHandle = setInterval(function () {
+          fetchSessions().then(refreshDashboardView).catch(function () {});
+        }, 5000);
+      }
+      return;
+    }
+    if (r === "motor") {
+      if (!motorTest) motorTest = loadMotorTest();
+      if (!motorTest) {
+        var mname = getParticipantName();
+        if (!mname) { location.hash = "#/"; return; }
+        motorTest = { name: mname, dominant: null, step: "setup", trialIndex: 0, trials: [], taps: 0, phaseEndsAt: null };
+      }
+      app.innerHTML = renderMotor();
+      bindMotor();
+      return;
+    }
+    if (r === "verbal") {
+      if (!verbalTest) verbalTest = loadVerbalTest();
+      if (!verbalTest) {
+        var vname = getParticipantName();
+        if (!vname) { location.hash = "#/"; return; }
+        newVerbalTest(vname);
+      }
+      app.innerHTML = renderVerbal();
+      bindVerbal();
+      return;
+    }
+    app.innerHTML = renderMenu();
+    bindMenu();
+  }
+
+  /* -------------------------------- menu screen -------------------------------- */
+
+  function renderMenu() {
+    var name = getParticipantName();
+    return '' +
+      '<div class="wrap">' +
+        '<div class="top-nav">' +
+          '<div class="brand"><span class="mark"></span><span>NeuroAssess</span></div>' +
+          '<a class="plain tiny" href="#/dashboard">Dashboard →</a>' +
+        '</div>' +
+
+        '<div class="card col" style="gap:16px;">' +
+          '<div class="col" style="gap:4px;">' +
+            '<span class="eyebrow">Get started</span>' +
+            '<h1>Choose an assessment</h1>' +
+            '<p class="muted">Enter your name once, then pick an assessment below.</p>' +
+          '</div>' +
+          '<div class="col">' +
+            '<label class="field-label" for="name-input">Your name</label>' +
+            '<input id="name-input" type="text" autocomplete="name" placeholder="e.g. Jordan Smith" value="' + escapeHtml(name) + '" />' +
+          '</div>' +
+          '<p class="tiny" id="start-error" style="color:var(--critical); display:none;"></p>' +
+        '</div>' +
+
+        '<button class="menu-card" id="menu-motor" type="button">' +
+          '<span class="menu-icon" style="background:var(--series-dom-wash, var(--accent-wash)); color:var(--series-dom);">✋</span>' +
+          '<span class="menu-body">' +
+            '<span style="font-weight:700;">Motor speed assessment</span>' +
+            '<span class="tiny muted">Finger-tapping speed, both hands</span>' +
+          '</span>' +
+          '<span class="menu-arrow">›</span>' +
+        '</button>' +
+
+        '<button class="menu-card" id="menu-verbal" type="button">' +
+          '<span class="menu-icon" style="background:var(--accent-wash); color:var(--accent);">🧠</span>' +
+          '<span class="menu-body">' +
+            '<span style="font-weight:700;">Verbal recall assessment</span>' +
+            '<span class="tiny muted">Listen, then recognize the words</span>' +
+          '</span>' +
+          '<span class="menu-arrow">›</span>' +
+        '</button>' +
+
+        '<div class="card col" style="gap:12px; align-items:center;">' +
+          '<span class="eyebrow">Share this app</span>' +
+          '<div class="qr-wrap">' + qrSvg(testUrl()) + '</div>' +
+          '<p class="tiny" style="text-align:center;">Scan to open this app on another phone.</p>' +
+        '</div>' +
+      '</div>';
+  }
+
+  function bindMenu() {
+    var nameInput = document.getElementById("name-input");
+    function ensureNameThenGo(hash) {
+      var name = nameInput.value.trim();
+      var err = document.getElementById("start-error");
+      if (!name) { err.textContent = "Please enter your name."; err.style.display = "block"; return; }
+      err.style.display = "none";
+      setParticipantName(name);
+      location.hash = hash;
+    }
+    document.getElementById("menu-motor").addEventListener("click", function () { ensureNameThenGo("#/motor"); });
+    document.getElementById("menu-verbal").addEventListener("click", function () { ensureNameThenGo("#/verbal"); });
+  }
+
+  /* ------------------------------ motor assessment ------------------------------ */
+
+  var tickHandle = null;
+  function clearTick() { if (tickHandle) { clearInterval(tickHandle); tickHandle = null; } }
+
+  function renderMotor() {
+    if (motorTest.step === "setup") {
+      return '<div class="wrap">' +
+        '<div class="top-nav">' +
+          '<a class="plain tiny" href="#/">← Menu</a>' +
+          '<div class="brand"><span class="mark"></span><span>Motor speed</span></div>' +
+        '</div>' +
+        '<div class="card col" style="gap:16px;">' +
+          '<div class="col" style="gap:4px;">' +
+            '<span class="eyebrow">Finger tapping speed</span>' +
+            '<h1>Motor speed assessment</h1>' +
+            '<p class="muted">You will tap a button as fast as you can for 10 seconds, 2 times per hand, alternating hands, starting with your dominant hand. Rest 10 seconds between trials.</p>' +
+          '</div>' +
+          '<div class="col">' +
+            '<label class="field-label">Dominant hand</label>' +
+            '<div class="hand-toggle" id="hand-toggle">' +
+              '<div class="hand-opt" data-hand="left" aria-pressed="false">Left</div>' +
+              '<div class="hand-opt" data-hand="right" aria-pressed="false">Right</div>' +
+            '</div>' +
+          '</div>' +
+          '<button class="btn btn-primary" id="begin-btn">Begin test</button>' +
+          '<p class="tiny" id="start-error" style="color:var(--critical); display:none;"></p>' +
+        '</div>' +
+      '</div>';
+    }
+
+    var progressPct = Math.round((motorTest.trialIndex / TOTAL_TRIALS) * 100);
+    var hand = handForTrial(motorTest.trialIndex);
+    var label = handLabel(hand);
+    var dotColor = hand === "dominant" ? "var(--series-dom)" : "var(--series-ndom)";
+
+    var head = '' +
+      '<div class="between">' +
+        '<span class="badge"><span class="dot" style="background:' + dotColor + '"></span>Trial ' + (motorTest.trialIndex + 1) + ' of ' + TOTAL_TRIALS + '</span>' +
+        '<span class="tiny">' + escapeHtml(motorTest.name) + '</span>' +
+      '</div>' +
+      '<div class="progress-track"><div class="progress-fill" style="width:' + progressPct + '%"></div></div>';
+
+    if (motorTest.step === "ready") {
+      return '<div class="wrap">' + head +
+        '<div class="card center-col" style="padding:36px 20px; gap:14px;">' +
+          '<span class="eyebrow">Get ready</span>' +
+          '<h2>' + label + '</h2>' +
+          '<p class="muted">When you tap Start, tap the button as rapidly as possible with that hand for 10 seconds.</p>' +
+          '<button class="btn btn-primary" id="start-trial-btn">Start trial</button>' +
+        '</div>' +
+        (motorTest.trialIndex > 0 ? motorSummaryStrip() : '') +
+      '</div>';
+    }
+
+    if (motorTest.step === "countdown") {
+      return '<div class="wrap">' + head +
+        '<div class="card center-col" style="padding:50px 20px; gap:6px;">' +
+          '<span class="eyebrow">' + label + '</span>' +
+          '<div class="timer-big tabular" id="countdown-num">' + motorTest.countdownVal + '</div>' +
+        '</div>' +
+      '</div>';
+    }
+
+    if (motorTest.step === "tapping") {
+      var remain = Math.max(0, Math.ceil((motorTest.phaseEndsAt - Date.now()) / 1000));
+      return '<div class="wrap">' + head +
+        '<div class="row" style="justify-content:space-between;">' +
+          '<span class="eyebrow">' + label + '</span>' +
+          '<span class="tabular" style="font-weight:700;" id="time-left">' + remain + 's left</span>' +
+        '</div>' +
+        '<button class="tap-zone" id="tap-btn">' +
+          '<span class="tap-count tabular" id="tap-count">' + motorTest.taps + '</span>' +
+          '<span class="tap-hint">TAP AS FAST AS YOU CAN</span>' +
+        '</button>' +
+      '</div>';
+    }
+
+    if (motorTest.step === "trialdone") {
+      var lastHand = handForTrial(motorTest.trialIndex);
+      return '<div class="wrap">' + head +
+        '<div class="card center-col" style="padding:34px 20px; gap:10px;">' +
+          '<span class="dot" style="width:36px;height:36px;background:var(--success);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem;">✓</span>' +
+          '<h2>' + motorTest.taps + ' taps</h2>' +
+          '<p class="muted">' + handLabel(lastHand) + '</p>' +
+        '</div>' +
+        motorSummaryStrip() +
+      '</div>';
+    }
+
+    if (motorTest.step === "rest") {
+      var remainR = Math.max(0, Math.ceil((motorTest.phaseEndsAt - Date.now()) / 1000));
+      var nextHand = handForTrial(motorTest.trialIndex);
+      return '<div class="wrap">' + head +
+        '<div class="card center-col" style="padding:40px 20px; gap:8px;">' +
+          '<span class="eyebrow">Rest</span>' +
+          '<div class="timer-big tabular">' + remainR + '</div>' +
+          '<p class="muted">Next: ' + handLabel(nextHand) + '</p>' +
+        '</div>' +
+        motorSummaryStrip() +
+      '</div>';
+    }
+
+    if (motorTest.step === "summary") {
+      return '<div class="wrap">' + renderMotorSummary() + '</div>';
+    }
+
+    return '<div class="wrap"><p>Something went wrong.</p></div>';
+  }
+
+  function motorSummaryStrip() {
+    if (!motorTest.trials.length) return "";
+    var dom = motorTest.trials.filter(function (t) { return t.hand === "dominant"; }).map(function (t) { return t.taps; });
+    var ndom = motorTest.trials.filter(function (t) { return t.hand === "nondominant"; }).map(function (t) { return t.taps; });
+    return '<div class="card">' +
+      '<div class="legend" style="margin-bottom:10px;">' +
+        '<span class="legend-item"><span class="legend-swatch" style="background:var(--series-dom)"></span>Dominant (' + dom.length + '/' + TRIALS_PER_HAND + ')</span>' +
+        '<span class="legend-item"><span class="legend-swatch" style="background:var(--series-ndom)"></span>Non-dominant (' + ndom.length + '/' + TRIALS_PER_HAND + ')</span>' +
+      '</div>' +
+      '<div class="row" style="gap:6px; flex-wrap:wrap;">' +
+        motorTest.trials.map(function (t, i) {
+          var c = t.hand === "dominant" ? "var(--series-dom)" : "var(--series-ndom)";
+          return '<span class="badge tabular" style="border-color:' + c + '55;">' + t.taps + '</span>';
+        }).join("") +
+      '</div>' +
+    '</div>';
+  }
+
+  function renderMotorSummary() {
+    var dom = motorTest.trials.filter(function (t) { return t.hand === "dominant"; }).map(function (t) { return t.taps; });
+    var ndom = motorTest.trials.filter(function (t) { return t.hand === "nondominant"; }).map(function (t) { return t.taps; });
+    var meanDom = round1(mean(dom));
+    var meanNdom = round1(mean(ndom));
+    var maxV = Math.max(meanDom, meanNdom, 1);
+
+    function barRow(label, val, color) {
+      var pct = Math.max(4, Math.round((val / maxV) * 100));
+      return '<div class="col" style="gap:5px;">' +
+        '<div class="between"><span class="tiny" style="font-weight:600; color:var(--text-secondary);">' + label + '</span><span class="tabular" style="font-weight:700;">' + val + '</span></div>' +
+        '<div class="progress-track" style="height:16px; border-radius:8px;"><div style="height:100%;width:' + pct + '%;background:' + color + ';border-radius:8px;"></div></div>' +
+      '</div>';
+    }
+
+    return '' +
+      '<div class="card col" style="gap:14px;">' +
+        '<div class="col" style="gap:2px;"><span class="eyebrow">Test complete</span><h2>Results for ' + escapeHtml(motorTest.name) + '</h2></div>' +
+        barRow(handLabel("dominant"), meanDom, "var(--series-dom)") +
+        barRow(handLabel("nondominant"), meanNdom, "var(--series-ndom)") +
+        '<p class="tiny muted">Mean taps across ' + TRIALS_PER_HAND + ' ten-second trials per hand.</p>' +
+      '</div>' +
+      '<div class="card">' +
+        '<div class="table-scroll">' +
+        '<table><thead><tr><th>Trial</th><th>Hand</th><th class="num">Taps</th></tr></thead><tbody>' +
+        motorTest.trials.map(function (t, i) {
+          return '<tr><td>' + (i + 1) + '</td><td>' + (t.hand === "dominant" ? "Dominant" : "Non-dominant") + '</td><td class="num tabular">' + t.taps + '</td></tr>';
+        }).join("") +
+        '</tbody></table></div>' +
+      '</div>' +
+      '<button class="btn btn-primary" id="submit-btn">Submit results</button>' +
+      '<p class="tiny" id="submit-status" style="text-align:center;"></p>' +
+      '<button class="btn btn-ghost" id="restart-btn">Back to menu</button>';
+  }
+
+  function bindMotor() {
+    clearTick();
+
+    if (motorTest.step === "setup") {
+      var chosenHand = null;
+      var toggle = document.getElementById("hand-toggle");
+      toggle.addEventListener("click", function (e) {
+        var el = e.target.closest(".hand-opt");
+        if (!el) return;
+        chosenHand = el.getAttribute("data-hand");
+        toggle.querySelectorAll(".hand-opt").forEach(function (o) {
+          o.setAttribute("aria-pressed", o === el ? "true" : "false");
+        });
+      });
+      document.getElementById("begin-btn").addEventListener("click", function () {
+        var err = document.getElementById("start-error");
+        if (!chosenHand) { err.textContent = "Please select your dominant hand."; err.style.display = "block"; return; }
+        err.style.display = "none";
+        newMotorTest(motorTest.name, chosenHand);
+        render();
+      });
+      return;
+    }
+
+    if (motorTest.step === "ready") {
+      var btn = document.getElementById("start-trial-btn");
+      if (btn) btn.addEventListener("click", function () {
+        motorTest.step = "countdown";
+        motorTest.countdownVal = 3;
+        saveMotorTest();
+        render();
+      });
+      return;
+    }
+
+    if (motorTest.step === "countdown") {
+      tickHandle = setInterval(function () {
+        motorTest.countdownVal -= 1;
+        if (motorTest.countdownVal <= 0) {
+          clearTick();
+          motorTest.step = "tapping";
+          motorTest.taps = 0;
+          motorTest.phaseEndsAt = Date.now() + TRIAL_MS;
+          saveMotorTest();
+          render();
+          return;
+        }
+        saveMotorTest();
+        var el = document.getElementById("countdown-num");
+        if (el) el.textContent = motorTest.countdownVal;
+      }, 700);
+      return;
+    }
+
+    if (motorTest.step === "tapping") {
+      var tapBtn = document.getElementById("tap-btn");
+      var onTap = function (e) {
+        e.preventDefault();
+        if (motorTest.step !== "tapping" || Date.now() >= motorTest.phaseEndsAt) return;
+        motorTest.taps += 1;
+        var c = document.getElementById("tap-count");
+        if (c) c.textContent = motorTest.taps;
+      };
+      tapBtn.addEventListener("pointerdown", onTap);
+
+      tickHandle = setInterval(function () {
+        var remain = Math.max(0, Math.ceil((motorTest.phaseEndsAt - Date.now()) / 1000));
+        var t = document.getElementById("time-left");
+        if (t) t.textContent = remain + "s left";
+        if (Date.now() >= motorTest.phaseEndsAt) {
+          clearTick();
+          finishMotorTrial();
+        }
+      }, 100);
+      return;
+    }
+
+    if (motorTest.step === "trialdone") {
+      tickHandle = setTimeout(function () {
+        advanceMotorTrial();
+      }, 1400);
+      return;
+    }
+
+    if (motorTest.step === "rest") {
+      tickHandle = setInterval(function () {
+        var remain = Math.max(0, Math.ceil((motorTest.phaseEndsAt - Date.now()) / 1000));
+        if (Date.now() >= motorTest.phaseEndsAt) {
+          clearTick();
+          motorTest.step = "countdown";
+          motorTest.countdownVal = 3;
+          saveMotorTest();
+          render();
+          return;
+        }
+        var el = document.querySelector(".timer-big");
+        if (el) el.textContent = remain;
+      }, 200);
+      return;
+    }
+
+    if (motorTest.step === "summary") {
+      var submitBtn = document.getElementById("submit-btn");
+      var status = document.getElementById("submit-status");
+      submitBtn.addEventListener("click", function () {
+        submitBtn.disabled = true;
+        status.textContent = "Saving…";
+        var dom = motorTest.trials.filter(function (t) { return t.hand === "dominant"; }).map(function (t) { return t.taps; });
+        var ndom = motorTest.trials.filter(function (t) { return t.hand === "nondominant"; }).map(function (t) { return t.taps; });
+        var session = {
+          id: uid(),
+          type: "motor",
+          name: motorTest.name,
+          dominantHand: motorTest.dominant,
+          startedAt: new Date().toISOString(),
+          trials: motorTest.trials,
+          meanDominant: round1(mean(dom)),
+          meanNonDominant: round1(mean(ndom))
+        };
+        submitSession(session).then(function () {
+          status.textContent = "Saved.";
+        }).catch(function (err) {
+          submitBtn.disabled = false;
+          status.innerHTML = submitErrorMessage(err);
+        });
+      });
+      document.getElementById("restart-btn").addEventListener("click", function () {
+        clearMotorTest();
+        location.hash = "#/";
+      });
+      return;
+    }
+  }
+
+  function finishMotorTrial() {
+    var hand = handForTrial(motorTest.trialIndex);
+    motorTest.trials.push({ hand: hand, taps: motorTest.taps });
+    motorTest.step = "trialdone";
+    saveMotorTest();
+    render();
+  }
+
+  function advanceMotorTrial() {
+    motorTest.trialIndex += 1;
+    if (motorTest.trialIndex >= TOTAL_TRIALS) {
+      motorTest.step = "summary";
+      saveMotorTest();
+      render();
+      return;
+    }
+    motorTest.step = "rest";
+    motorTest.phaseEndsAt = Date.now() + REST_MS;
+    saveMotorTest();
+    render();
+  }
+
+  /* ------------------------------ verbal assessment ------------------------------ */
+
+  var verbalTickHandle = null;
+  function clearVerbalTick() { if (verbalTickHandle) { clearInterval(verbalTickHandle); verbalTickHandle = null; } }
+
+  function verbalHead(label) {
+    return '<div class="between">' +
+        '<span class="badge">' + label + '</span>' +
+        '<span class="tiny">' + escapeHtml(verbalTest.name) + '</span>' +
+      '</div>';
+  }
+
+  function renderVerbal() {
+    if (verbalTest.step === "intro") {
+      return '<div class="wrap">' +
+        '<div class="top-nav">' +
+          '<a class="plain tiny" href="#/">← Menu</a>' +
+          '<div class="brand"><span class="mark"></span><span>Verbal recall</span></div>' +
+        '</div>' +
+        '<div class="card col" style="gap:16px;">' +
+          '<div class="col" style="gap:4px;">' +
+            '<span class="eyebrow">Word recognition</span>' +
+            '<h1>Verbal recall assessment</h1>' +
+            '<p class="muted">You will hear 12 words read aloud, one per second. The words will not be shown on screen. Afterward, you will see 24 words one at a time — some you heard, some you did not — and answer whether each one was in the list.</p>' +
+          '</div>' +
+          '<p class="tiny muted">Find a quiet spot and turn your volume up before you begin.</p>' +
+          '<button class="btn btn-primary" id="verbal-begin-btn">Begin listening</button>' +
+        '</div>' +
+      '</div>';
+    }
+
+    if (verbalTest.step === "study") {
+      var progressPct = Math.round(((verbalTest.studyIndex) / verbalTest.targets.length) * 100);
+      return '<div class="wrap">' +
+        verbalHead("Listening " + (verbalTest.studyIndex + 1) + " of " + verbalTest.targets.length) +
+        '<div class="progress-track"><div class="progress-fill" id="study-progress-fill" style="width:' + progressPct + '%"></div></div>' +
+        '<div class="card center-col" style="padding:44px 20px; gap:18px;">' +
+          '<div class="study-pulse"><span class="study-pulse-dot"></span></div>' +
+          '<p class="muted" style="text-align:center;">Listen carefully. Words are not shown on screen.</p>' +
+        '</div>' +
+      '</div>';
+    }
+
+    if (verbalTest.step === "recognition") {
+      var item = verbalTest.items[verbalTest.itemIndex];
+      var pct = Math.round((verbalTest.itemIndex / verbalTest.items.length) * 100);
+      return '<div class="wrap">' +
+        verbalHead("Word " + (verbalTest.itemIndex + 1) + " of " + verbalTest.items.length) +
+        '<div class="progress-track"><div class="progress-fill" style="width:' + pct + '%"></div></div>' +
+        '<div class="card center-col" style="padding:40px 20px; gap:22px;">' +
+          '<p class="muted">Was this word in the list you heard?</p>' +
+          '<div class="word-display">' + escapeHtml(item.word) + '</div>' +
+          '<div class="choice-row">' +
+            '<button class="btn btn-primary" id="yes-btn">Yes</button>' +
+            '<button class="btn btn-ghost" id="no-btn">No</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    }
+
+    if (verbalTest.step === "summary") {
+      return '<div class="wrap">' + renderVerbalSummary() + '</div>';
+    }
+
+    return '<div class="wrap"><p>Something went wrong.</p></div>';
+  }
+
+  function verbalScore() {
+    var hits = verbalTest.items.filter(function (t) { return t.isTarget && t.response === "yes"; }).length;
+    var falseAlarms = verbalTest.items.filter(function (t) { return !t.isTarget && t.response === "yes"; }).length;
+    var correctRejections = verbalTest.items.filter(function (t) { return !t.isTarget && t.response === "no"; }).length;
+    var misses = verbalTest.targets.length - hits;
+    return { hits: hits, falseAlarms: falseAlarms, correctRejections: correctRejections, misses: misses };
+  }
+
+  function renderVerbalSummary() {
+    var sc = verbalScore();
+    return '' +
+      '<div class="card col" style="gap:14px;">' +
+        '<div class="col" style="gap:2px;"><span class="eyebrow">Assessment complete</span><h2>Results for ' + escapeHtml(verbalTest.name) + '</h2></div>' +
+        '<div class="row" style="gap:20px;">' +
+          '<div class="col" style="gap:0;"><span class="tiny muted">Correctly recognized</span><span class="tabular" style="font-size:1.8rem;font-weight:800;color:var(--series-dom)">' + sc.hits + ' / ' + verbalTest.targets.length + '</span></div>' +
+          '<div class="col" style="gap:0;"><span class="tiny muted">False alarms</span><span class="tabular" style="font-size:1.8rem;font-weight:800;color:var(--series-ndom)">' + sc.falseAlarms + ' / ' + verbalTest.foils.length + '</span></div>' +
+        '</div>' +
+        '<p class="tiny muted">Category: ' + escapeHtml(categoryLabel(verbalTest.category)) + '. Total correctly recalled target words: ' + sc.hits + '.</p>' +
+      '</div>' +
+      '<div class="card">' +
+        '<div class="table-scroll">' +
+        '<table><thead><tr><th>Word</th><th>In list?</th><th class="num">Response</th></tr></thead><tbody>' +
+        verbalTest.items.map(function (t) {
+          return '<tr><td>' + escapeHtml(t.word) + '</td><td>' + (t.isTarget ? "Yes" : "No") + '</td><td class="num tabular">' + (t.response === "yes" ? "Yes" : "No") + '</td></tr>';
+        }).join("") +
+        '</tbody></table></div>' +
+      '</div>' +
+      '<button class="btn btn-primary" id="verbal-submit-btn">Submit results</button>' +
+      '<p class="tiny" id="verbal-submit-status" style="text-align:center;"></p>' +
+      '<button class="btn btn-ghost" id="verbal-restart-btn">Back to menu</button>';
+  }
+
+  function bindVerbal() {
+    clearVerbalTick();
+
+    if (verbalTest.step === "intro") {
+      document.getElementById("verbal-begin-btn").addEventListener("click", function () {
+        verbalTest.step = "study";
+        verbalTest.studyIndex = 0;
+        saveVerbalTest();
+        render();
+      });
+      return;
+    }
+
+    if (verbalTest.step === "study") {
+      speakStudyWord(verbalTest.studyIndex);
+      verbalTickHandle = setInterval(function () {
+        verbalTest.studyIndex += 1;
+        if (verbalTest.studyIndex >= verbalTest.targets.length) {
+          clearVerbalTick();
+          verbalTest.step = "recognition";
+          buildRecognitionItems();
+          saveVerbalTest();
+          render();
+          return;
+        }
+        speakStudyWord(verbalTest.studyIndex);
+        saveVerbalTest();
+        var fill = document.getElementById("study-progress-fill");
+        if (fill) fill.style.width = Math.round((verbalTest.studyIndex / verbalTest.targets.length) * 100) + "%";
+        var badge = document.querySelector(".badge");
+        if (badge) badge.textContent = "Listening " + (verbalTest.studyIndex + 1) + " of " + verbalTest.targets.length;
+      }, STUDY_GAP_MS);
+      return;
+    }
+
+    if (verbalTest.step === "recognition") {
+      var advance = function (resp) {
+        verbalTest.items[verbalTest.itemIndex].response = resp;
+        verbalTest.itemIndex += 1;
+        if (verbalTest.itemIndex >= verbalTest.items.length) {
+          verbalTest.step = "summary";
+        }
+        saveVerbalTest();
+        render();
+      };
+      document.getElementById("yes-btn").addEventListener("click", function () { advance("yes"); });
+      document.getElementById("no-btn").addEventListener("click", function () { advance("no"); });
+      return;
+    }
+
+    if (verbalTest.step === "summary") {
+      var submitBtn = document.getElementById("verbal-submit-btn");
+      var status = document.getElementById("verbal-submit-status");
+      submitBtn.addEventListener("click", function () {
+        submitBtn.disabled = true;
+        status.textContent = "Saving…";
+        var sc = verbalScore();
+        var session = {
+          id: uid(),
+          type: "verbal",
+          name: verbalTest.name,
+          category: verbalTest.category,
+          startedAt: new Date().toISOString(),
+          targets: verbalTest.targets,
+          foils: verbalTest.foils,
+          items: verbalTest.items,
+          hits: sc.hits,
+          falseAlarms: sc.falseAlarms,
+          correctRejections: sc.correctRejections,
+          misses: sc.misses
+        };
+        submitSession(session).then(function () {
+          status.textContent = "Saved.";
+        }).catch(function (err) {
+          submitBtn.disabled = false;
+          status.innerHTML = submitErrorMessage(err);
+        });
+      });
+      document.getElementById("verbal-restart-btn").addEventListener("click", function () {
+        clearVerbalTest();
+        location.hash = "#/";
+      });
+      return;
+    }
+  }
+
+  /* ------------------------------ dashboard ------------------------------ */
+
+  function uniqueNames() {
+    var seen = {};
+    var out = [];
+    SESSIONS.forEach(function (s) {
+      if (!seen[s.name]) { seen[s.name] = true; out.push(s.name); }
+    });
+    return out;
+  }
+
+  function renderDashboard() {
+    var names = uniqueNames();
+    var params = new URLSearchParams(location.hash.split("?")[1] || "");
+    var selected = params.get("user") || "all";
+
+    var header = '' +
+      '<div class="top-nav">' +
+        '<a class="plain tiny" href="#/">← Menu</a>' +
+        '<div class="brand"><span class="mark"></span><span>Dashboard</span></div>' +
+      '</div>' +
+      '<div class="card col" style="gap:10px;">' +
+        '<div class="between" style="align-items:flex-start;">' +
+          '<div class="col" style="gap:4px;">' +
+            '<span class="eyebrow">Neurocognitive assessments</span>' +
+            '<h1>Results dashboard</h1>' +
+            '<p class="muted tiny" id="dash-status-line">' + SESSIONS.length + ' session' + (SESSIONS.length === 1 ? "" : "s") + ' across ' + names.length + ' participant' + (names.length === 1 ? "" : "s") + '. Auto-refreshing…</p>' +
+          '</div>' +
+          '<button class="btn btn-ghost" id="dash-refresh-btn" style="flex:none; width:auto; padding:10px 16px; font-size:0.85rem; align-self:flex-start;">Refresh</button>' +
+        '</div>' +
+      '</div>';
+
+    if (!configured) {
+      return '<div class="wrap wrap-wide">' + header +
+        '<div class="card empty-state">' +
+          '<p><strong>Not connected to a results sheet yet.</strong></p>' +
+          '<p class="tiny">Set <code>CONFIG.APPS_SCRIPT_URL</code> near the top of this file to your deployed Apps Script Web App URL — see README.md for the full setup.</p>' +
+        '</div>' +
+      '</div>';
+    }
+
+    if (!SESSIONS.length) {
+      return '<div class="wrap wrap-wide">' + header +
+        '<div class="card empty-state">' +
+          '<p>No results yet.</p>' +
+          '<p class="tiny">Share the app link or QR code from the menu to begin collecting data. This dashboard refreshes automatically as results come in.</p>' +
+        '</div>' +
+        '<div class="card col" style="gap:12px; align-items:center;">' +
+          '<div class="qr-wrap">' + qrSvg(testUrl()) + '</div>' +
+        '</div>' +
+      '</div>';
+    }
+
+    var controls = '' +
+      '<div class="card between" style="gap:12px; flex-wrap:wrap;">' +
+        '<div class="row" style="gap:8px;">' +
+          '<label class="tiny" for="user-select" style="font-weight:600;">Participant</label>' +
+          '<select id="user-select">' +
+            '<option value="all"' + (selected === "all" ? " selected" : "") + '>All participants</option>' +
+            names.map(function (n) { return '<option value="' + escapeHtml(n) + '"' + (n === selected ? " selected" : "") + '>' + escapeHtml(n) + '</option>'; }).join("") +
+          '</select>' +
+        '</div>' +
+      '</div>';
+
+    var motorSessionsAll = SESSIONS.filter(function (s) { return sessionType(s) === "motor"; });
+    var verbalSessionsAll = SESSIONS.filter(function (s) { return sessionType(s) === "verbal"; });
+    var motorGlobalMax = niceMax(Math.max.apply(null, motorSessionsAll.map(function (s) { return Math.max(s.meanDominant, s.meanNonDominant); }).concat([1])));
+
+    var body;
+    if (selected === "all") {
+      body = names.map(function (n) {
+        var userMotor = motorSessionsAll.filter(function (s) { return s.name === n; });
+        var userVerbal = verbalSessionsAll.filter(function (s) { return s.name === n; });
+        return renderUserCard(n, userMotor, userVerbal, motorGlobalMax);
+      }).join("");
+    } else {
+      var userMotor = motorSessionsAll.filter(function (s) { return s.name === selected; });
+      var userVerbal = verbalSessionsAll.filter(function (s) { return s.name === selected; });
+      body = renderUserCard(selected, userMotor, userVerbal, motorGlobalMax, true);
+    }
+
+    return '<div class="wrap wrap-wide">' + header + controls + body + '</div>';
+  }
+
+  function renderUserCard(name, motorSessions, verbalSessions, motorGlobalMax, expanded) {
+    motorSessions = motorSessions.slice().sort(function (a, b) { return new Date(a.startedAt) - new Date(b.startedAt); });
+    verbalSessions = verbalSessions.slice().sort(function (a, b) { return new Date(a.startedAt) - new Date(b.startedAt); });
+
+    var latestAny = (motorSessions.concat(verbalSessions)).sort(function (a, b) { return new Date(b.startedAt) - new Date(a.startedAt); })[0];
+
+    var motorBlock = "";
+    if (motorSessions.length) {
+      var latestMotor = motorSessions[motorSessions.length - 1];
+      var motorChart = barChartSvg(motorSessions, motorGlobalMax,
+        { key: "meanDominant", color: "var(--series-dom)", label: "Dominant hand" },
+        { key: "meanNonDominant", color: "var(--series-ndom)", label: "Non-dominant hand" });
+      var motorTable = expanded ? (
+        '<div class="table-scroll">' +
+        '<table><thead><tr><th>Trial time</th><th class="num">Dominant mean</th><th class="num">Non-dom mean</th></tr></thead><tbody>' +
+        motorSessions.map(function (s) {
+          return '<tr><td>' + fmtDateTime(s.startedAt) + '</td><td class="num tabular">' + s.meanDominant + '</td><td class="num tabular">' + s.meanNonDominant + '</td></tr>';
+        }).join("") +
+        '</tbody></table></div>'
+      ) : "";
+      motorBlock = '' +
+        '<div class="col" style="gap:10px;">' +
+          '<div class="between">' +
+            '<span class="eyebrow">Motor speed assessment</span>' +
+            '<span class="tiny muted">Latest: ' + fmtDateTime(latestMotor.startedAt) + '</span>' +
+          '</div>' +
+          '<div class="legend">' +
+            '<span class="legend-item"><span class="legend-swatch" style="background:var(--series-dom)"></span>Dominant hand</span>' +
+            '<span class="legend-item"><span class="legend-swatch" style="background:var(--series-ndom)"></span>Non-dominant hand</span>' +
+          '</div>' +
+          '<div class="row" style="gap:20px;">' +
+            '<div class="col" style="gap:0;"><span class="tiny muted">Dominant mean</span><span class="tabular" style="font-size:1.3rem;font-weight:800;color:var(--series-dom)">' + latestMotor.meanDominant + '</span></div>' +
+            '<div class="col" style="gap:0;"><span class="tiny muted">Non-dom mean</span><span class="tabular" style="font-size:1.3rem;font-weight:800;color:var(--series-ndom)">' + latestMotor.meanNonDominant + '</span></div>' +
+          '</div>' +
+          motorChart +
+          motorTable +
+        '</div>';
+    }
+
+    var verbalBlock = "";
+    if (verbalSessions.length) {
+      var latestVerbal = verbalSessions[verbalSessions.length - 1];
+      var verbalChart = barChartSvg(verbalSessions, 12,
+        { key: "hits", color: "var(--series-dom)", label: "Correctly recognized" },
+        { key: "falseAlarms", color: "var(--series-ndom)", label: "False alarms" });
+      var verbalTable = expanded ? (
+        '<div class="table-scroll">' +
+        '<table><thead><tr><th>Trial time</th><th>Category</th><th class="num">Correct</th><th class="num">False alarms</th></tr></thead><tbody>' +
+        verbalSessions.map(function (s) {
+          return '<tr><td>' + fmtDateTime(s.startedAt) + '</td><td>' + escapeHtml(categoryLabel(s.category)) + '</td><td class="num tabular">' + s.hits + '</td><td class="num tabular">' + s.falseAlarms + '</td></tr>';
+        }).join("") +
+        '</tbody></table></div>'
+      ) : "";
+      verbalBlock = '' +
+        '<div class="col" style="gap:10px;">' +
+          '<div class="between">' +
+            '<span class="eyebrow">Verbal recall assessment</span>' +
+            '<span class="tiny muted">Latest: ' + fmtDateTime(latestVerbal.startedAt) + '</span>' +
+          '</div>' +
+          '<div class="legend">' +
+            '<span class="legend-item"><span class="legend-swatch" style="background:var(--series-dom)"></span>Correctly recognized</span>' +
+            '<span class="legend-item"><span class="legend-swatch" style="background:var(--series-ndom)"></span>False alarms</span>' +
+          '</div>' +
+          '<div class="row" style="gap:20px;">' +
+            '<div class="col" style="gap:0;"><span class="tiny muted">Correctly recalled</span><span class="tabular" style="font-size:1.3rem;font-weight:800;color:var(--series-dom)">' + latestVerbal.hits + ' / ' + latestVerbal.targets.length + '</span></div>' +
+            '<div class="col" style="gap:0;"><span class="tiny muted">False alarms</span><span class="tabular" style="font-size:1.3rem;font-weight:800;color:var(--series-ndom)">' + latestVerbal.falseAlarms + ' / ' + latestVerbal.foils.length + '</span></div>' +
+          '</div>' +
+          verbalChart +
+          verbalTable +
+        '</div>';
+    }
+
+    return '' +
+      '<div class="card col" style="gap:20px; margin-bottom:14px;">' +
+        '<div class="between">' +
+          '<h2>' + escapeHtml(name) + '</h2>' +
+          (latestAny ? '<span class="tiny muted">Latest activity: ' + fmtDateTime(latestAny.startedAt) + '</span>' : '') +
+        '</div>' +
+        motorBlock +
+        verbalBlock +
+      '</div>';
+  }
+
+  function barChartSvg(sessions, yMax, seriesA, seriesB) {
+    var n = sessions.length;
+    var W = Math.max(280, Math.min(680, n * 92 + 50)), H = 220;
+    var padL = 34, padR = 10, padT = 14, padB = 34;
+    var plotW = W - padL - padR, plotH = H - padT - padB;
+    var groupW = plotW / n;
+    var barW = Math.min(26, groupW * 0.32);
+    var gap = 3;
+
+    function y(v) { return padT + plotH - (v / yMax) * plotH; }
+
+    var gridLines = "";
+    var ticks = 4;
+    for (var i = 0; i <= ticks; i++) {
+      var v = (yMax / ticks) * i;
+      var yy = y(v);
+      gridLines += '<line x1="' + padL + '" y1="' + yy + '" x2="' + (W - padR) + '" y2="' + yy + '" stroke="var(--grid)" stroke-width="1"/>';
+      gridLines += '<text x="' + (padL - 8) + '" y="' + (yy + 3) + '" text-anchor="end" font-size="10" fill="var(--text-muted)">' + Math.round(v) + '</text>';
+    }
+
+    var bars = "";
+    var labels = "";
+    sessions.forEach(function (s, idx) {
+      var cx = padL + groupW * idx + groupW / 2;
+      var xA = cx - gap / 2 - barW;
+      var xB = cx + gap / 2;
+      var valA = s[seriesA.key];
+      var valB = s[seriesB.key];
+      var yA = y(valA);
+      var yB = y(valB);
+      bars += '<rect x="' + xA + '" y="' + yA + '" width="' + barW + '" height="' + (y(0) - yA) + '" rx="4" fill="' + seriesA.color + '"><title>' + fmtDateTime(s.startedAt) + ' — ' + seriesA.label + ': ' + valA + '</title></rect>';
+      bars += '<rect x="' + xB + '" y="' + yB + '" width="' + barW + '" height="' + (y(0) - yB) + '" rx="4" fill="' + seriesB.color + '"><title>' + fmtDateTime(s.startedAt) + ' — ' + seriesB.label + ': ' + valB + '</title></rect>';
+      if (n <= 8) {
+        bars += '<text x="' + (xA + barW / 2) + '" y="' + (yA - 5) + '" text-anchor="middle" font-size="10" font-weight="700" fill="' + seriesA.color + '">' + valA + '</text>';
+        bars += '<text x="' + (xB + barW / 2) + '" y="' + (yB - 5) + '" text-anchor="middle" font-size="10" font-weight="700" fill="' + seriesB.color + '">' + valB + '</text>';
+      }
+      labels += '<text x="' + cx + '" y="' + (H - padB + 16) + '" text-anchor="middle" font-size="9.5" fill="var(--text-muted)">' + fmtTimeShort(s.startedAt) + '</text>';
+    });
+
+    var baseline = '<line x1="' + padL + '" y1="' + y(0) + '" x2="' + (W - padR) + '" y2="' + y(0) + '" stroke="var(--axis)" stroke-width="1.2"/>';
+
+    return '<div class="table-scroll"><svg class="bar-chart-svg" viewBox="0 0 ' + W + ' ' + H + '" width="100%" style="min-width:' + Math.min(W, 280) + 'px; max-width:' + W + 'px; display:block;">' +
+      gridLines + baseline + bars + labels +
+    '</svg></div>';
+  }
+
+  function bindDashboard() {
+    var sel = document.getElementById("user-select");
+    if (sel) {
+      sel.addEventListener("change", function () {
+        location.hash = "#/dashboard?user=" + encodeURIComponent(sel.value);
+      });
+    }
+    var refreshBtn = document.getElementById("dash-refresh-btn");
+    if (refreshBtn) {
+      refreshBtn.addEventListener("click", function () {
+        refreshBtn.disabled = true;
+        fetchSessions().then(function () {
+          refreshDashboardView();
+        }).catch(function () {
+          refreshBtn.disabled = false;
+          var line = document.getElementById("dash-status-line");
+          if (line) line.textContent = "Couldn't reach the results sheet — check your connection.";
+        });
+      });
+    }
+  }
+
+
+  /* -------------------------------- boot -------------------------------- */
+
+  motorTest = loadMotorTest();
+  verbalTest = loadVerbalTest();
+  render();
+})();
+</script>
+
+</body>
+</html>

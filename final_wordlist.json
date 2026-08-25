@@ -1,0 +1,2171 @@
+{
+  "threshold": 4.5,
+  "categories": {
+    "animal": [
+      {
+        "word": "horse",
+        "concM": 5.0,
+        "subtlex": 4737
+      },
+      {
+        "word": "fish",
+        "concM": 5.0,
+        "subtlex": 4258
+      },
+      {
+        "word": "cat",
+        "concM": 4.86,
+        "subtlex": 3383
+      },
+      {
+        "word": "dogs",
+        "concM": 5.0,
+        "subtlex": 2704
+      },
+      {
+        "word": "bird",
+        "concM": 5.0,
+        "subtlex": 2318
+      },
+      {
+        "word": "pig",
+        "concM": 5.0,
+        "subtlex": 1996
+      },
+      {
+        "word": "monkey",
+        "concM": 4.9,
+        "subtlex": 1709
+      },
+      {
+        "word": "rat",
+        "concM": 4.85,
+        "subtlex": 1663
+      },
+      {
+        "word": "kitty",
+        "concM": 4.97,
+        "subtlex": 1362
+      },
+      {
+        "word": "chick",
+        "concM": 4.93,
+        "subtlex": 1334
+      },
+      {
+        "word": "cow",
+        "concM": 4.96,
+        "subtlex": 1301
+      },
+      {
+        "word": "robin",
+        "concM": 4.61,
+        "subtlex": 1272
+      },
+      {
+        "word": "duck",
+        "concM": 4.86,
+        "subtlex": 1263
+      },
+      {
+        "word": "turkey",
+        "concM": 4.89,
+        "subtlex": 1153
+      },
+      {
+        "word": "snake",
+        "concM": 5.0,
+        "subtlex": 1140
+      },
+      {
+        "word": "fox",
+        "concM": 4.97,
+        "subtlex": 1102
+      },
+      {
+        "word": "bug",
+        "concM": 5.0,
+        "subtlex": 1068
+      },
+      {
+        "word": "rabbit",
+        "concM": 4.93,
+        "subtlex": 1068
+      },
+      {
+        "word": "bat",
+        "concM": 5.0,
+        "subtlex": 1052
+      },
+      {
+        "word": "mouse",
+        "concM": 4.83,
+        "subtlex": 975
+      },
+      {
+        "word": "bunny",
+        "concM": 4.97,
+        "subtlex": 946
+      },
+      {
+        "word": "tiger",
+        "concM": 5.0,
+        "subtlex": 945
+      },
+      {
+        "word": "turtle",
+        "concM": 5.0,
+        "subtlex": 869
+      },
+      {
+        "word": "lion",
+        "concM": 4.96,
+        "subtlex": 783
+      },
+      {
+        "word": "shark",
+        "concM": 4.93,
+        "subtlex": 764
+      },
+      {
+        "word": "sheep",
+        "concM": 4.9,
+        "subtlex": 685
+      },
+      {
+        "word": "goose",
+        "concM": 4.81,
+        "subtlex": 665
+      },
+      {
+        "word": "hawk",
+        "concM": 4.93,
+        "subtlex": 650
+      },
+      {
+        "word": "buffalo",
+        "concM": 4.83,
+        "subtlex": 607
+      },
+      {
+        "word": "frog",
+        "concM": 5.0,
+        "subtlex": 603
+      },
+      {
+        "word": "eagle",
+        "concM": 5.0,
+        "subtlex": 586
+      },
+      {
+        "word": "puppy",
+        "concM": 4.78,
+        "subtlex": 584
+      },
+      {
+        "word": "elephant",
+        "concM": 5.0,
+        "subtlex": 580
+      },
+      {
+        "word": "whale",
+        "concM": 4.96,
+        "subtlex": 574
+      },
+      {
+        "word": "lamb",
+        "concM": 4.97,
+        "subtlex": 542
+      },
+      {
+        "word": "goat",
+        "concM": 5.0,
+        "subtlex": 537
+      },
+      {
+        "word": "worm",
+        "concM": 4.9,
+        "subtlex": 516
+      },
+      {
+        "word": "spider",
+        "concM": 4.97,
+        "subtlex": 515
+      },
+      {
+        "word": "deer",
+        "concM": 4.86,
+        "subtlex": 444
+      },
+      {
+        "word": "shrimp",
+        "concM": 4.8,
+        "subtlex": 444
+      },
+      {
+        "word": "pony",
+        "concM": 4.9,
+        "subtlex": 413
+      },
+      {
+        "word": "ox",
+        "concM": 4.86,
+        "subtlex": 397
+      },
+      {
+        "word": "lobster",
+        "concM": 4.86,
+        "subtlex": 374
+      },
+      {
+        "word": "tick",
+        "concM": 4.57,
+        "subtlex": 370
+      },
+      {
+        "word": "mule",
+        "concM": 5.0,
+        "subtlex": 358
+      },
+      {
+        "word": "crab",
+        "concM": 4.9,
+        "subtlex": 352
+      },
+      {
+        "word": "swan",
+        "concM": 4.96,
+        "subtlex": 348
+      },
+      {
+        "word": "salmon",
+        "concM": 4.81,
+        "subtlex": 334
+      },
+      {
+        "word": "elk",
+        "concM": 4.93,
+        "subtlex": 306
+      },
+      {
+        "word": "pigeon",
+        "concM": 4.71,
+        "subtlex": 301
+      },
+      {
+        "word": "toad",
+        "concM": 5.0,
+        "subtlex": 290
+      },
+      {
+        "word": "owl",
+        "concM": 4.93,
+        "subtlex": 286
+      },
+      {
+        "word": "gorilla",
+        "concM": 4.97,
+        "subtlex": 283
+      },
+      {
+        "word": "moose",
+        "concM": 4.97,
+        "subtlex": 282
+      },
+      {
+        "word": "butterfly",
+        "concM": 4.93,
+        "subtlex": 281
+      },
+      {
+        "word": "squirrel",
+        "concM": 4.89,
+        "subtlex": 279
+      },
+      {
+        "word": "leopard",
+        "concM": 5.0,
+        "subtlex": 276
+      },
+      {
+        "word": "donkey",
+        "concM": 5.0,
+        "subtlex": 273
+      },
+      {
+        "word": "colt",
+        "concM": 4.96,
+        "subtlex": 267
+      },
+      {
+        "word": "peacock",
+        "concM": 5.0,
+        "subtlex": 261
+      },
+      {
+        "word": "camel",
+        "concM": 4.93,
+        "subtlex": 256
+      },
+      {
+        "word": "weasel",
+        "concM": 4.74,
+        "subtlex": 250
+      },
+      {
+        "word": "lizard",
+        "concM": 4.68,
+        "subtlex": 247
+      },
+      {
+        "word": "beaver",
+        "concM": 4.68,
+        "subtlex": 246
+      },
+      {
+        "word": "kitten",
+        "concM": 4.86,
+        "subtlex": 241
+      },
+      {
+        "word": "crow",
+        "concM": 4.93,
+        "subtlex": 227
+      },
+      {
+        "word": "trout",
+        "concM": 4.72,
+        "subtlex": 205
+      },
+      {
+        "word": "clam",
+        "concM": 4.89,
+        "subtlex": 200
+      },
+      {
+        "word": "mink",
+        "concM": 4.58,
+        "subtlex": 189
+      },
+      {
+        "word": "coyote",
+        "concM": 4.96,
+        "subtlex": 185
+      },
+      {
+        "word": "alligator",
+        "concM": 4.96,
+        "subtlex": 178
+      },
+      {
+        "word": "cockroach",
+        "concM": 4.96,
+        "subtlex": 174
+      },
+      {
+        "word": "cobra",
+        "concM": 5.0,
+        "subtlex": 170
+      },
+      {
+        "word": "falcon",
+        "concM": 4.9,
+        "subtlex": 169
+      },
+      {
+        "word": "flea",
+        "concM": 4.89,
+        "subtlex": 169
+      },
+      {
+        "word": "parrot",
+        "concM": 5.0,
+        "subtlex": 167
+      },
+      {
+        "word": "skunk",
+        "concM": 4.88,
+        "subtlex": 166
+      },
+      {
+        "word": "hen",
+        "concM": 4.9,
+        "subtlex": 163
+      },
+      {
+        "word": "stallion",
+        "concM": 4.72,
+        "subtlex": 163
+      },
+      {
+        "word": "oyster",
+        "concM": 4.85,
+        "subtlex": 156
+      },
+      {
+        "word": "armadillo",
+        "concM": 4.9,
+        "subtlex": 154
+      },
+      {
+        "word": "chimp",
+        "concM": 4.96,
+        "subtlex": 153
+      },
+      {
+        "word": "herring",
+        "concM": 4.68,
+        "subtlex": 152
+      },
+      {
+        "word": "mare",
+        "concM": 4.75,
+        "subtlex": 148
+      },
+      {
+        "word": "penguin",
+        "concM": 5.0,
+        "subtlex": 147
+      },
+      {
+        "word": "dragonfly",
+        "concM": 4.83,
+        "subtlex": 145
+      },
+      {
+        "word": "cricket",
+        "concM": 4.77,
+        "subtlex": 144
+      },
+      {
+        "word": "dolphin",
+        "concM": 4.96,
+        "subtlex": 141
+      },
+      {
+        "word": "squid",
+        "concM": 4.71,
+        "subtlex": 141
+      },
+      {
+        "word": "scorpion",
+        "concM": 4.84,
+        "subtlex": 136
+      },
+      {
+        "word": "roach",
+        "concM": 4.96,
+        "subtlex": 135
+      },
+      {
+        "word": "sparrow",
+        "concM": 4.85,
+        "subtlex": 133
+      },
+      {
+        "word": "panther",
+        "concM": 4.93,
+        "subtlex": 131
+      },
+      {
+        "word": "zebra",
+        "concM": 4.86,
+        "subtlex": 128
+      },
+      {
+        "word": "jaguar",
+        "concM": 4.9,
+        "subtlex": 121
+      },
+      {
+        "word": "kangaroo",
+        "concM": 4.86,
+        "subtlex": 118
+      },
+      {
+        "word": "moth",
+        "concM": 4.69,
+        "subtlex": 116
+      },
+      {
+        "word": "hamster",
+        "concM": 4.86,
+        "subtlex": 109
+      },
+      {
+        "word": "mackerel",
+        "concM": 4.89,
+        "subtlex": 108
+      },
+      {
+        "word": "panda",
+        "concM": 4.75,
+        "subtlex": 108
+      },
+      {
+        "word": "piglet",
+        "concM": 4.93,
+        "subtlex": 108
+      },
+      {
+        "word": "rhino",
+        "concM": 4.9,
+        "subtlex": 106
+      },
+      {
+        "word": "beetle",
+        "concM": 4.83,
+        "subtlex": 105
+      },
+      {
+        "word": "cougar",
+        "concM": 4.82,
+        "subtlex": 102
+      },
+      {
+        "word": "octopus",
+        "concM": 5.0,
+        "subtlex": 99
+      },
+      {
+        "word": "serpent",
+        "concM": 4.97,
+        "subtlex": 99
+      },
+      {
+        "word": "buzzard",
+        "concM": 4.74,
+        "subtlex": 93
+      },
+      {
+        "word": "mosquito",
+        "concM": 4.88,
+        "subtlex": 93
+      },
+      {
+        "word": "snail",
+        "concM": 4.93,
+        "subtlex": 90
+      },
+      {
+        "word": "vulture",
+        "concM": 4.73,
+        "subtlex": 90
+      },
+      {
+        "word": "pelican",
+        "concM": 4.96,
+        "subtlex": 89
+      },
+      {
+        "word": "baboon",
+        "concM": 4.92,
+        "subtlex": 87
+      },
+      {
+        "word": "rattlesnake",
+        "concM": 5.0,
+        "subtlex": 86
+      },
+      {
+        "word": "ferret",
+        "concM": 4.97,
+        "subtlex": 83
+      },
+      {
+        "word": "maggot",
+        "concM": 4.97,
+        "subtlex": 81
+      },
+      {
+        "word": "python",
+        "concM": 4.96,
+        "subtlex": 79
+      },
+      {
+        "word": "giraffe",
+        "concM": 4.73,
+        "subtlex": 76
+      },
+      {
+        "word": "groundhog",
+        "concM": 4.93,
+        "subtlex": 76
+      },
+      {
+        "word": "jellyfish",
+        "concM": 4.93,
+        "subtlex": 74
+      },
+      {
+        "word": "eel",
+        "concM": 4.69,
+        "subtlex": 73
+      },
+      {
+        "word": "wasp",
+        "concM": 4.96,
+        "subtlex": 73
+      },
+      {
+        "word": "hippo",
+        "concM": 4.93,
+        "subtlex": 72
+      },
+      {
+        "word": "llama",
+        "concM": 4.78,
+        "subtlex": 72
+      },
+      {
+        "word": "yak",
+        "concM": 4.65,
+        "subtlex": 71
+      },
+      {
+        "word": "otter",
+        "concM": 4.86,
+        "subtlex": 69
+      },
+      {
+        "word": "hornet",
+        "concM": 4.96,
+        "subtlex": 68
+      },
+      {
+        "word": "boa",
+        "concM": 4.92,
+        "subtlex": 66
+      },
+      {
+        "word": "catfish",
+        "concM": 4.85,
+        "subtlex": 63
+      },
+      {
+        "word": "chimpanzee",
+        "concM": 4.96,
+        "subtlex": 62
+      },
+      {
+        "word": "seagull",
+        "concM": 5.0,
+        "subtlex": 62
+      },
+      {
+        "word": "flamingo",
+        "concM": 4.81,
+        "subtlex": 60
+      },
+      {
+        "word": "caterpillar",
+        "concM": 4.87,
+        "subtlex": 57
+      },
+      {
+        "word": "walrus",
+        "concM": 5.0,
+        "subtlex": 57
+      },
+      {
+        "word": "parakeet",
+        "concM": 4.9,
+        "subtlex": 55
+      },
+      {
+        "word": "antelope",
+        "concM": 5.0,
+        "subtlex": 50
+      },
+      {
+        "word": "woodpecker",
+        "concM": 4.93,
+        "subtlex": 50
+      },
+      {
+        "word": "ostrich",
+        "concM": 4.71,
+        "subtlex": 48
+      },
+      {
+        "word": "grasshopper",
+        "concM": 4.91,
+        "subtlex": 47
+      },
+      {
+        "word": "greyhound",
+        "concM": 5.0,
+        "subtlex": 46
+      },
+      {
+        "word": "sardine",
+        "concM": 5.0,
+        "subtlex": 46
+      },
+      {
+        "word": "blackbird",
+        "concM": 5.0,
+        "subtlex": 42
+      },
+      {
+        "word": "chipmunk",
+        "concM": 4.97,
+        "subtlex": 42
+      },
+      {
+        "word": "iguana",
+        "concM": 4.83,
+        "subtlex": 40
+      },
+      {
+        "word": "bluebird",
+        "concM": 4.97,
+        "subtlex": 39
+      }
+    ],
+    "food": [
+      {
+        "word": "honey",
+        "concM": 4.88,
+        "subtlex": 15325
+      },
+      {
+        "word": "coffee",
+        "concM": 4.81,
+        "subtlex": 7371
+      },
+      {
+        "word": "beer",
+        "concM": 4.88,
+        "subtlex": 3850
+      },
+      {
+        "word": "chicken",
+        "concM": 4.8,
+        "subtlex": 3148
+      },
+      {
+        "word": "wine",
+        "concM": 4.79,
+        "subtlex": 3078
+      },
+      {
+        "word": "tea",
+        "concM": 4.69,
+        "subtlex": 2990
+      },
+      {
+        "word": "meat",
+        "concM": 4.9,
+        "subtlex": 2226
+      },
+      {
+        "word": "milk",
+        "concM": 4.92,
+        "subtlex": 2169
+      },
+      {
+        "word": "cheese",
+        "concM": 4.7,
+        "subtlex": 1991
+      },
+      {
+        "word": "candy",
+        "concM": 4.83,
+        "subtlex": 1825
+      },
+      {
+        "word": "pizza",
+        "concM": 5.0,
+        "subtlex": 1709
+      },
+      {
+        "word": "toast",
+        "concM": 4.93,
+        "subtlex": 1707
+      },
+      {
+        "word": "chocolate",
+        "concM": 4.72,
+        "subtlex": 1499
+      },
+      {
+        "word": "pie",
+        "concM": 4.92,
+        "subtlex": 1466
+      },
+      {
+        "word": "bread",
+        "concM": 4.92,
+        "subtlex": 1445
+      },
+      {
+        "word": "juice",
+        "concM": 4.89,
+        "subtlex": 1371
+      },
+      {
+        "word": "egg",
+        "concM": 4.97,
+        "subtlex": 1328
+      },
+      {
+        "word": "soup",
+        "concM": 4.72,
+        "subtlex": 1285
+      },
+      {
+        "word": "apple",
+        "concM": 5.0,
+        "subtlex": 1207
+      },
+      {
+        "word": "orange",
+        "concM": 4.66,
+        "subtlex": 1138
+      },
+      {
+        "word": "sandwich",
+        "concM": 4.9,
+        "subtlex": 1118
+      },
+      {
+        "word": "butter",
+        "concM": 4.9,
+        "subtlex": 1042
+      },
+      {
+        "word": "wing",
+        "concM": 4.86,
+        "subtlex": 1032
+      },
+      {
+        "word": "soda",
+        "concM": 4.97,
+        "subtlex": 1012
+      },
+      {
+        "word": "beef",
+        "concM": 4.74,
+        "subtlex": 1005
+      },
+      {
+        "word": "salad",
+        "concM": 4.97,
+        "subtlex": 868
+      },
+      {
+        "word": "cookie",
+        "concM": 5.0,
+        "subtlex": 852
+      },
+      {
+        "word": "chips",
+        "concM": 4.9,
+        "subtlex": 828
+      },
+      {
+        "word": "steak",
+        "concM": 4.96,
+        "subtlex": 828
+      },
+      {
+        "word": "whiskey",
+        "concM": 4.74,
+        "subtlex": 822
+      },
+      {
+        "word": "corn",
+        "concM": 4.96,
+        "subtlex": 725
+      },
+      {
+        "word": "dessert",
+        "concM": 4.93,
+        "subtlex": 715
+      },
+      {
+        "word": "jam",
+        "concM": 4.71,
+        "subtlex": 690
+      },
+      {
+        "word": "gum",
+        "concM": 4.89,
+        "subtlex": 683
+      },
+      {
+        "word": "lemon",
+        "concM": 5.0,
+        "subtlex": 613
+      },
+      {
+        "word": "bacon",
+        "concM": 4.9,
+        "subtlex": 605
+      },
+      {
+        "word": "ham",
+        "concM": 4.9,
+        "subtlex": 591
+      },
+      {
+        "word": "potato",
+        "concM": 4.85,
+        "subtlex": 576
+      },
+      {
+        "word": "brandy",
+        "concM": 4.81,
+        "subtlex": 567
+      },
+      {
+        "word": "pumpkin",
+        "concM": 4.9,
+        "subtlex": 553
+      },
+      {
+        "word": "banana",
+        "concM": 5.0,
+        "subtlex": 547
+      },
+      {
+        "word": "pork",
+        "concM": 4.79,
+        "subtlex": 537
+      },
+      {
+        "word": "burger",
+        "concM": 4.93,
+        "subtlex": 522
+      },
+      {
+        "word": "vodka",
+        "concM": 4.97,
+        "subtlex": 515
+      },
+      {
+        "word": "popcorn",
+        "concM": 5.0,
+        "subtlex": 465
+      },
+      {
+        "word": "hamburger",
+        "concM": 5.0,
+        "subtlex": 397
+      },
+      {
+        "word": "sausage",
+        "concM": 4.88,
+        "subtlex": 397
+      },
+      {
+        "word": "peanuts",
+        "concM": 4.9,
+        "subtlex": 385
+      },
+      {
+        "word": "rum",
+        "concM": 4.93,
+        "subtlex": 382
+      },
+      {
+        "word": "olive",
+        "concM": 4.9,
+        "subtlex": 375
+      },
+      {
+        "word": "jelly",
+        "concM": 4.93,
+        "subtlex": 363
+      },
+      {
+        "word": "bean",
+        "concM": 5.0,
+        "subtlex": 349
+      },
+      {
+        "word": "mustard",
+        "concM": 4.93,
+        "subtlex": 329
+      },
+      {
+        "word": "ginger",
+        "concM": 4.92,
+        "subtlex": 327
+      },
+      {
+        "word": "peach",
+        "concM": 4.9,
+        "subtlex": 324
+      },
+      {
+        "word": "bourbon",
+        "concM": 4.93,
+        "subtlex": 319
+      },
+      {
+        "word": "pudding",
+        "concM": 4.9,
+        "subtlex": 314
+      },
+      {
+        "word": "ketchup",
+        "concM": 5.0,
+        "subtlex": 310
+      },
+      {
+        "word": "noodles",
+        "concM": 4.96,
+        "subtlex": 309
+      },
+      {
+        "word": "garlic",
+        "concM": 4.89,
+        "subtlex": 306
+      },
+      {
+        "word": "spaghetti",
+        "concM": 5.0,
+        "subtlex": 302
+      },
+      {
+        "word": "rib",
+        "concM": 4.9,
+        "subtlex": 301
+      },
+      {
+        "word": "tomato",
+        "concM": 5.0,
+        "subtlex": 301
+      },
+      {
+        "word": "muffin",
+        "concM": 4.78,
+        "subtlex": 297
+      },
+      {
+        "word": "cracker",
+        "concM": 4.96,
+        "subtlex": 294
+      },
+      {
+        "word": "vegetable",
+        "concM": 4.89,
+        "subtlex": 291
+      },
+      {
+        "word": "cola",
+        "concM": 4.79,
+        "subtlex": 282
+      },
+      {
+        "word": "strawberry",
+        "concM": 5.0,
+        "subtlex": 282
+      },
+      {
+        "word": "lemonade",
+        "concM": 4.83,
+        "subtlex": 281
+      },
+      {
+        "word": "mint",
+        "concM": 4.54,
+        "subtlex": 277
+      },
+      {
+        "word": "gravy",
+        "concM": 4.97,
+        "subtlex": 269
+      },
+      {
+        "word": "syrup",
+        "concM": 4.76,
+        "subtlex": 260
+      },
+      {
+        "word": "cocoa",
+        "concM": 4.89,
+        "subtlex": 256
+      },
+      {
+        "word": "pickle",
+        "concM": 4.64,
+        "subtlex": 235
+      },
+      {
+        "word": "squash",
+        "concM": 4.7,
+        "subtlex": 223
+      },
+      {
+        "word": "sushi",
+        "concM": 4.96,
+        "subtlex": 222
+      },
+      {
+        "word": "onion",
+        "concM": 4.86,
+        "subtlex": 216
+      },
+      {
+        "word": "grape",
+        "concM": 5.0,
+        "subtlex": 204
+      },
+      {
+        "word": "pancake",
+        "concM": 4.86,
+        "subtlex": 202
+      },
+      {
+        "word": "pea",
+        "concM": 4.9,
+        "subtlex": 199
+      },
+      {
+        "word": "carrot",
+        "concM": 5.0,
+        "subtlex": 195
+      },
+      {
+        "word": "biscuit",
+        "concM": 4.9,
+        "subtlex": 191
+      },
+      {
+        "word": "fudge",
+        "concM": 4.89,
+        "subtlex": 185
+      },
+      {
+        "word": "veal",
+        "concM": 4.75,
+        "subtlex": 181
+      },
+      {
+        "word": "brownie",
+        "concM": 4.82,
+        "subtlex": 180
+      },
+      {
+        "word": "berry",
+        "concM": 4.93,
+        "subtlex": 178
+      },
+      {
+        "word": "lettuce",
+        "concM": 4.97,
+        "subtlex": 173
+      },
+      {
+        "word": "oatmeal",
+        "concM": 4.93,
+        "subtlex": 169
+      },
+      {
+        "word": "lime",
+        "concM": 4.96,
+        "subtlex": 168
+      },
+      {
+        "word": "cupcake",
+        "concM": 5.0,
+        "subtlex": 167
+      },
+      {
+        "word": "macaroni",
+        "concM": 4.97,
+        "subtlex": 166
+      },
+      {
+        "word": "cheeseburger",
+        "concM": 4.93,
+        "subtlex": 163
+      },
+      {
+        "word": "flour",
+        "concM": 4.97,
+        "subtlex": 161
+      },
+      {
+        "word": "taco",
+        "concM": 4.93,
+        "subtlex": 158
+      },
+      {
+        "word": "bagel",
+        "concM": 5.0,
+        "subtlex": 156
+      },
+      {
+        "word": "cabbage",
+        "concM": 4.75,
+        "subtlex": 148
+      },
+      {
+        "word": "cappuccino",
+        "concM": 4.79,
+        "subtlex": 146
+      },
+      {
+        "word": "meatball",
+        "concM": 4.93,
+        "subtlex": 132
+      },
+      {
+        "word": "blueberry",
+        "concM": 4.96,
+        "subtlex": 131
+      },
+      {
+        "word": "pepperoni",
+        "concM": 5.0,
+        "subtlex": 131
+      },
+      {
+        "word": "pineapple",
+        "concM": 4.94,
+        "subtlex": 130
+      },
+      {
+        "word": "spinach",
+        "concM": 4.77,
+        "subtlex": 130
+      },
+      {
+        "word": "grapefruit",
+        "concM": 4.96,
+        "subtlex": 126
+      },
+      {
+        "word": "latte",
+        "concM": 4.64,
+        "subtlex": 123
+      },
+      {
+        "word": "omelet",
+        "concM": 4.93,
+        "subtlex": 121
+      },
+      {
+        "word": "meatloaf",
+        "concM": 5.0,
+        "subtlex": 119
+      },
+      {
+        "word": "cheesecake",
+        "concM": 4.97,
+        "subtlex": 118
+      },
+      {
+        "word": "broccoli",
+        "concM": 4.87,
+        "subtlex": 116
+      },
+      {
+        "word": "yogurt",
+        "concM": 4.9,
+        "subtlex": 116
+      },
+      {
+        "word": "mayonnaise",
+        "concM": 4.9,
+        "subtlex": 115
+      },
+      {
+        "word": "mushroom",
+        "concM": 4.83,
+        "subtlex": 109
+      },
+      {
+        "word": "salsa",
+        "concM": 4.7,
+        "subtlex": 109
+      },
+      {
+        "word": "waffle",
+        "concM": 4.71,
+        "subtlex": 108
+      },
+      {
+        "word": "pretzel",
+        "concM": 4.74,
+        "subtlex": 102
+      },
+      {
+        "word": "cucumber",
+        "concM": 4.83,
+        "subtlex": 101
+      },
+      {
+        "word": "walnut",
+        "concM": 4.97,
+        "subtlex": 100
+      },
+      {
+        "word": "bologna",
+        "concM": 4.93,
+        "subtlex": 99
+      },
+      {
+        "word": "cranberry",
+        "concM": 4.96,
+        "subtlex": 99
+      },
+      {
+        "word": "pastry",
+        "concM": 4.97,
+        "subtlex": 98
+      },
+      {
+        "word": "cider",
+        "concM": 4.97,
+        "subtlex": 97
+      },
+      {
+        "word": "raspberry",
+        "concM": 4.93,
+        "subtlex": 96
+      },
+      {
+        "word": "celery",
+        "concM": 4.8,
+        "subtlex": 95
+      },
+      {
+        "word": "lollipop",
+        "concM": 4.96,
+        "subtlex": 91
+      },
+      {
+        "word": "turnip",
+        "concM": 4.79,
+        "subtlex": 88
+      },
+      {
+        "word": "casserole",
+        "concM": 4.87,
+        "subtlex": 85
+      },
+      {
+        "word": "burrito",
+        "concM": 5.0,
+        "subtlex": 84
+      },
+      {
+        "word": "mango",
+        "concM": 5.0,
+        "subtlex": 84
+      },
+      {
+        "word": "raisin",
+        "concM": 4.97,
+        "subtlex": 83
+      },
+      {
+        "word": "popsicle",
+        "concM": 4.93,
+        "subtlex": 82
+      },
+      {
+        "word": "eggnog",
+        "concM": 5.0,
+        "subtlex": 79
+      },
+      {
+        "word": "marshmallow",
+        "concM": 4.85,
+        "subtlex": 77
+      },
+      {
+        "word": "pistachio",
+        "concM": 4.93,
+        "subtlex": 77
+      },
+      {
+        "word": "donut",
+        "concM": 4.93,
+        "subtlex": 72
+      },
+      {
+        "word": "margarita",
+        "concM": 5.0,
+        "subtlex": 71
+      },
+      {
+        "word": "pear",
+        "concM": 4.93,
+        "subtlex": 68
+      },
+      {
+        "word": "caramel",
+        "concM": 4.73,
+        "subtlex": 63
+      },
+      {
+        "word": "avocado",
+        "concM": 4.89,
+        "subtlex": 62
+      },
+      {
+        "word": "fig",
+        "concM": 4.97,
+        "subtlex": 62
+      },
+      {
+        "word": "eggplant",
+        "concM": 4.97,
+        "subtlex": 56
+      },
+      {
+        "word": "asparagus",
+        "concM": 4.96,
+        "subtlex": 50
+      },
+      {
+        "word": "zucchini",
+        "concM": 4.87,
+        "subtlex": 49
+      },
+      {
+        "word": "brisket",
+        "concM": 4.61,
+        "subtlex": 47
+      },
+      {
+        "word": "broth",
+        "concM": 4.68,
+        "subtlex": 45
+      },
+      {
+        "word": "croissant",
+        "concM": 4.96,
+        "subtlex": 45
+      }
+    ],
+    "body_part": [
+      {
+        "word": "head",
+        "concM": 4.75,
+        "subtlex": 18947
+      },
+      {
+        "word": "face",
+        "concM": 4.87,
+        "subtlex": 14747
+      },
+      {
+        "word": "hand",
+        "concM": 4.72,
+        "subtlex": 14262
+      },
+      {
+        "word": "heart",
+        "concM": 4.52,
+        "subtlex": 12453
+      },
+      {
+        "word": "hair",
+        "concM": 4.97,
+        "subtlex": 7831
+      },
+      {
+        "word": "eye",
+        "concM": 4.9,
+        "subtlex": 5701
+      },
+      {
+        "word": "mouth",
+        "concM": 4.74,
+        "subtlex": 5325
+      },
+      {
+        "word": "brain",
+        "concM": 4.69,
+        "subtlex": 3928
+      },
+      {
+        "word": "nose",
+        "concM": 4.89,
+        "subtlex": 3557
+      },
+      {
+        "word": "arm",
+        "concM": 4.96,
+        "subtlex": 3336
+      },
+      {
+        "word": "foot",
+        "concM": 4.9,
+        "subtlex": 3311
+      },
+      {
+        "word": "neck",
+        "concM": 5.0,
+        "subtlex": 3035
+      },
+      {
+        "word": "leg",
+        "concM": 4.83,
+        "subtlex": 2882
+      },
+      {
+        "word": "teeth",
+        "concM": 4.96,
+        "subtlex": 2440
+      },
+      {
+        "word": "skin",
+        "concM": 4.79,
+        "subtlex": 2246
+      },
+      {
+        "word": "chest",
+        "concM": 4.93,
+        "subtlex": 2090
+      },
+      {
+        "word": "finger",
+        "concM": 5.0,
+        "subtlex": 1870
+      },
+      {
+        "word": "throat",
+        "concM": 4.97,
+        "subtlex": 1837
+      },
+      {
+        "word": "stomach",
+        "concM": 4.89,
+        "subtlex": 1725
+      },
+      {
+        "word": "ear",
+        "concM": 5.0,
+        "subtlex": 1632
+      },
+      {
+        "word": "tongue",
+        "concM": 4.93,
+        "subtlex": 1589
+      },
+      {
+        "word": "shoulder",
+        "concM": 4.93,
+        "subtlex": 1336
+      },
+      {
+        "word": "bone",
+        "concM": 4.9,
+        "subtlex": 1329
+      },
+      {
+        "word": "tail",
+        "concM": 4.96,
+        "subtlex": 1219
+      },
+      {
+        "word": "sweat",
+        "concM": 4.71,
+        "subtlex": 1115
+      },
+      {
+        "word": "horn",
+        "concM": 5.0,
+        "subtlex": 1075
+      },
+      {
+        "word": "temple",
+        "concM": 4.53,
+        "subtlex": 895
+      },
+      {
+        "word": "belly",
+        "concM": 4.8,
+        "subtlex": 794
+      },
+      {
+        "word": "skull",
+        "concM": 4.83,
+        "subtlex": 750
+      },
+      {
+        "word": "knee",
+        "concM": 5.0,
+        "subtlex": 749
+      },
+      {
+        "word": "liver",
+        "concM": 4.68,
+        "subtlex": 729
+      },
+      {
+        "word": "muscle",
+        "concM": 4.5,
+        "subtlex": 694
+      },
+      {
+        "word": "tooth",
+        "concM": 4.89,
+        "subtlex": 692
+      },
+      {
+        "word": "palm",
+        "concM": 4.83,
+        "subtlex": 675
+      },
+      {
+        "word": "chin",
+        "concM": 4.89,
+        "subtlex": 647
+      },
+      {
+        "word": "toe",
+        "concM": 4.93,
+        "subtlex": 647
+      },
+      {
+        "word": "beard",
+        "concM": 4.96,
+        "subtlex": 643
+      },
+      {
+        "word": "thumb",
+        "concM": 4.96,
+        "subtlex": 603
+      },
+      {
+        "word": "lip",
+        "concM": 4.96,
+        "subtlex": 548
+      },
+      {
+        "word": "wrist",
+        "concM": 4.93,
+        "subtlex": 527
+      },
+      {
+        "word": "kidney",
+        "concM": 4.96,
+        "subtlex": 494
+      },
+      {
+        "word": "breast",
+        "concM": 4.89,
+        "subtlex": 457
+      },
+      {
+        "word": "scar",
+        "concM": 4.74,
+        "subtlex": 432
+      },
+      {
+        "word": "lung",
+        "concM": 4.82,
+        "subtlex": 420
+      },
+      {
+        "word": "ankle",
+        "concM": 4.81,
+        "subtlex": 409
+      },
+      {
+        "word": "forehead",
+        "concM": 4.9,
+        "subtlex": 400
+      },
+      {
+        "word": "heel",
+        "concM": 4.86,
+        "subtlex": 377
+      },
+      {
+        "word": "fist",
+        "concM": 4.93,
+        "subtlex": 375
+      },
+      {
+        "word": "cheek",
+        "concM": 4.83,
+        "subtlex": 365
+      },
+      {
+        "word": "jaw",
+        "concM": 4.87,
+        "subtlex": 364
+      },
+      {
+        "word": "feather",
+        "concM": 4.9,
+        "subtlex": 338
+      },
+      {
+        "word": "urine",
+        "concM": 4.93,
+        "subtlex": 332
+      },
+      {
+        "word": "elbow",
+        "concM": 5.0,
+        "subtlex": 313
+      },
+      {
+        "word": "spine",
+        "concM": 4.88,
+        "subtlex": 293
+      },
+      {
+        "word": "iris",
+        "concM": 4.54,
+        "subtlex": 270
+      },
+      {
+        "word": "waist",
+        "concM": 4.72,
+        "subtlex": 262
+      },
+      {
+        "word": "skeleton",
+        "concM": 4.97,
+        "subtlex": 261
+      },
+      {
+        "word": "mustache",
+        "concM": 4.9,
+        "subtlex": 252
+      },
+      {
+        "word": "claw",
+        "concM": 4.83,
+        "subtlex": 223
+      },
+      {
+        "word": "thigh",
+        "concM": 4.9,
+        "subtlex": 191
+      },
+      {
+        "word": "scalp",
+        "concM": 4.82,
+        "subtlex": 188
+      },
+      {
+        "word": "vein",
+        "concM": 4.63,
+        "subtlex": 183
+      },
+      {
+        "word": "fin",
+        "concM": 4.76,
+        "subtlex": 174
+      },
+      {
+        "word": "abdomen",
+        "concM": 4.7,
+        "subtlex": 171
+      },
+      {
+        "word": "bruise",
+        "concM": 4.73,
+        "subtlex": 165
+      },
+      {
+        "word": "fingerprint",
+        "concM": 4.96,
+        "subtlex": 163
+      },
+      {
+        "word": "pupil",
+        "concM": 4.55,
+        "subtlex": 160
+      },
+      {
+        "word": "shin",
+        "concM": 4.86,
+        "subtlex": 157
+      },
+      {
+        "word": "nipple",
+        "concM": 4.83,
+        "subtlex": 144
+      },
+      {
+        "word": "crotch",
+        "concM": 4.77,
+        "subtlex": 140
+      },
+      {
+        "word": "quill",
+        "concM": 5.0,
+        "subtlex": 139
+      },
+      {
+        "word": "saliva",
+        "concM": 4.89,
+        "subtlex": 135
+      },
+      {
+        "word": "spleen",
+        "concM": 4.7,
+        "subtlex": 131
+      },
+      {
+        "word": "beak",
+        "concM": 4.96,
+        "subtlex": 107
+      },
+      {
+        "word": "pelvis",
+        "concM": 4.93,
+        "subtlex": 103
+      },
+      {
+        "word": "eyeball",
+        "concM": 4.92,
+        "subtlex": 94
+      },
+      {
+        "word": "torso",
+        "concM": 4.83,
+        "subtlex": 94
+      },
+      {
+        "word": "buttocks",
+        "concM": 4.83,
+        "subtlex": 93
+      },
+      {
+        "word": "uterus",
+        "concM": 4.71,
+        "subtlex": 92
+      },
+      {
+        "word": "hoof",
+        "concM": 4.89,
+        "subtlex": 88
+      },
+      {
+        "word": "pimple",
+        "concM": 4.77,
+        "subtlex": 85
+      },
+      {
+        "word": "eyebrow",
+        "concM": 4.85,
+        "subtlex": 71
+      },
+      {
+        "word": "fingernail",
+        "concM": 4.93,
+        "subtlex": 68
+      },
+      {
+        "word": "knuckle",
+        "concM": 4.93,
+        "subtlex": 66
+      },
+      {
+        "word": "armpit",
+        "concM": 4.8,
+        "subtlex": 64
+      },
+      {
+        "word": "genitals",
+        "concM": 4.96,
+        "subtlex": 63
+      },
+      {
+        "word": "navel",
+        "concM": 4.71,
+        "subtlex": 63
+      },
+      {
+        "word": "wart",
+        "concM": 4.89,
+        "subtlex": 63
+      },
+      {
+        "word": "femur",
+        "concM": 4.88,
+        "subtlex": 58
+      },
+      {
+        "word": "larynx",
+        "concM": 4.5,
+        "subtlex": 58
+      },
+      {
+        "word": "talon",
+        "concM": 4.8,
+        "subtlex": 56
+      },
+      {
+        "word": "goatee",
+        "concM": 4.89,
+        "subtlex": 54
+      },
+      {
+        "word": "intestine",
+        "concM": 4.55,
+        "subtlex": 52
+      },
+      {
+        "word": "zit",
+        "concM": 4.85,
+        "subtlex": 52
+      },
+      {
+        "word": "forearm",
+        "concM": 4.69,
+        "subtlex": 50
+      },
+      {
+        "word": "blister",
+        "concM": 4.71,
+        "subtlex": 48
+      },
+      {
+        "word": "acne",
+        "concM": 4.89,
+        "subtlex": 46
+      },
+      {
+        "word": "windpipe",
+        "concM": 4.75,
+        "subtlex": 46
+      },
+      {
+        "word": "eyelash",
+        "concM": 5.0,
+        "subtlex": 44
+      },
+      {
+        "word": "toenail",
+        "concM": 4.86,
+        "subtlex": 44
+      },
+      {
+        "word": "snout",
+        "concM": 4.89,
+        "subtlex": 43
+      },
+      {
+        "word": "collarbone",
+        "concM": 4.85,
+        "subtlex": 42
+      },
+      {
+        "word": "dandruff",
+        "concM": 4.79,
+        "subtlex": 41
+      },
+      {
+        "word": "pancreas",
+        "concM": 4.79,
+        "subtlex": 40
+      },
+      {
+        "word": "cartilage",
+        "concM": 4.71,
+        "subtlex": 37
+      },
+      {
+        "word": "esophagus",
+        "concM": 4.59,
+        "subtlex": 36
+      },
+      {
+        "word": "nostril",
+        "concM": 4.89,
+        "subtlex": 35
+      },
+      {
+        "word": "bellybutton",
+        "concM": 5.0,
+        "subtlex": 33
+      },
+      {
+        "word": "scab",
+        "concM": 4.71,
+        "subtlex": 32
+      },
+      {
+        "word": "freckle",
+        "concM": 4.56,
+        "subtlex": 30
+      },
+      {
+        "word": "mane",
+        "concM": 4.73,
+        "subtlex": 30
+      },
+      {
+        "word": "mucus",
+        "concM": 4.76,
+        "subtlex": 30
+      },
+      {
+        "word": "kneecap",
+        "concM": 4.7,
+        "subtlex": 29
+      },
+      {
+        "word": "antennae",
+        "concM": 4.85,
+        "subtlex": 28
+      },
+      {
+        "word": "molar",
+        "concM": 4.83,
+        "subtlex": 26
+      },
+      {
+        "word": "rectum",
+        "concM": 4.92,
+        "subtlex": 25
+      },
+      {
+        "word": "placenta",
+        "concM": 4.79,
+        "subtlex": 24
+      },
+      {
+        "word": "jawbone",
+        "concM": 4.96,
+        "subtlex": 21
+      },
+      {
+        "word": "thorax",
+        "concM": 4.56,
+        "subtlex": 20
+      },
+      {
+        "word": "cuticle",
+        "concM": 4.94,
+        "subtlex": 19
+      },
+      {
+        "word": "dimple",
+        "concM": 4.74,
+        "subtlex": 19
+      },
+      {
+        "word": "tonsil",
+        "concM": 4.72,
+        "subtlex": 18
+      },
+      {
+        "word": "earlobe",
+        "concM": 4.96,
+        "subtlex": 17
+      },
+      {
+        "word": "eyelid",
+        "concM": 5.0,
+        "subtlex": 17
+      },
+      {
+        "word": "bicep",
+        "concM": 4.67,
+        "subtlex": 16
+      },
+      {
+        "word": "cornea",
+        "concM": 4.86,
+        "subtlex": 16
+      },
+      {
+        "word": "antler",
+        "concM": 4.86,
+        "subtlex": 15
+      },
+      {
+        "word": "eardrum",
+        "concM": 4.58,
+        "subtlex": 15
+      },
+      {
+        "word": "hangnail",
+        "concM": 4.71,
+        "subtlex": 15
+      },
+      {
+        "word": "shinbone",
+        "concM": 4.8,
+        "subtlex": 15
+      },
+      {
+        "word": "cheekbone",
+        "concM": 4.71,
+        "subtlex": 14
+      },
+      {
+        "word": "exoskeleton",
+        "concM": 4.9,
+        "subtlex": 13
+      },
+      {
+        "word": "tusk",
+        "concM": 4.76,
+        "subtlex": 13
+      },
+      {
+        "word": "whisker",
+        "concM": 4.7,
+        "subtlex": 13
+      },
+      {
+        "word": "goosebumps",
+        "concM": 4.72,
+        "subtlex": 12
+      },
+      {
+        "word": "udder",
+        "concM": 5.0,
+        "subtlex": 11
+      },
+      {
+        "word": "fibula",
+        "concM": 4.76,
+        "subtlex": 10
+      },
+      {
+        "word": "fingertip",
+        "concM": 4.93,
+        "subtlex": 10
+      },
+      {
+        "word": "hamstring",
+        "concM": 4.72,
+        "subtlex": 10
+      },
+      {
+        "word": "earwax",
+        "concM": 4.87,
+        "subtlex": 9
+      },
+      {
+        "word": "areola",
+        "concM": 4.78,
+        "subtlex": 7
+      },
+      {
+        "word": "bucktooth",
+        "concM": 4.79,
+        "subtlex": 7
+      },
+      {
+        "word": "blackhead",
+        "concM": 4.71,
+        "subtlex": 4
+      },
+      {
+        "word": "sideburn",
+        "concM": 4.75,
+        "subtlex": 4
+      }
+    ]
+  }
+}
